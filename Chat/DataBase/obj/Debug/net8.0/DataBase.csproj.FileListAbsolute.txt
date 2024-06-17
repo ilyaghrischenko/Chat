@@ -1,0 +1,15 @@
+O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\DataBase\bin\Debug\net8.0\DataBase.deps.json
+O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\DataBase\bin\Debug\net8.0\DataBase.runtimeconfig.json
+O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\DataBase\bin\Debug\net8.0\DataBase.dll
+O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\DataBase\bin\Debug\net8.0\DataBase.pdb
+O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\DataBase\obj\Debug\net8.0\DataBase.csproj.AssemblyReference.cache
+O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\DataBase\obj\Debug\net8.0\DataBase.GeneratedMSBuildEditorConfig.editorconfig
+O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\DataBase\obj\Debug\net8.0\DataBase.AssemblyInfoInputs.cache
+O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\DataBase\obj\Debug\net8.0\DataBase.AssemblyInfo.cs
+O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\DataBase\obj\Debug\net8.0\DataBase.csproj.CoreCompileInputs.cache
+O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\DataBase\obj\Debug\net8.0\DataBase.sourcelink.json
+O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\DataBase\obj\Debug\net8.0\DataBase.dll
+O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\DataBase\obj\Debug\net8.0\refint\DataBase.dll
+O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\DataBase\obj\Debug\net8.0\DataBase.pdb
+O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\DataBase\obj\Debug\net8.0\DataBase.genruntimeconfig.cache
+O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\DataBase\obj\Debug\net8.0\ref\DataBase.dll
