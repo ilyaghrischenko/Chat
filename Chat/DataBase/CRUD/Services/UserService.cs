@@ -9,12 +9,9 @@ namespace DataBase.CRUD.Services
 {
     public class UserService : IUserService
     {
-        private readonly ChatDbContext _context;
+        private readonly ChatDbContext _context = new();
 
-        public UserService(ChatDbContext context)
-        {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
-        }
+        public UserService() { }
 
         public async Task AddAsync(User user)
         {

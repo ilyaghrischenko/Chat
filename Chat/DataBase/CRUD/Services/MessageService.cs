@@ -11,12 +11,9 @@ namespace DataBase.CRUD.Services
 {
     public class MessageService : IMessageService
     {
-        private readonly ChatDbContext _context;
+        private readonly ChatDbContext _context = new();
 
-        public MessageService(ChatDbContext context)
-        {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
-        }
+        public MessageService() { }
 
         public async Task AddAsync(Message message)
         {

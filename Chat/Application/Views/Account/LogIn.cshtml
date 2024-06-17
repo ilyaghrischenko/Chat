@@ -1,0 +1,26 @@
+﻿@model LogInViewModel
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<div class="login-container">
+    <div class="login-box">
+        <h2>Log in</h2>
+        <form asp-controller="Account" asp-action="LogIn" method="post">
+            <div class="input-group">
+                <label asp-for="Login">Login</label>
+                <input asp-for="Login" type="text"/>
+                <span asp-validation-for="Login" class="text-danger"></span>
+            </div>
+            <div class="input-group">
+                <label asp-for="Password">Password</label>
+                <input asp-for="Password" type="password"/>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <button type="submit">Log in</button>
+        </form>
+        <p class="register-text">
+            Account does not exist? <a asp-controller="Account" asp-action="SignUp">Sign up</a>
+        </p>
+    </div>
+</div>

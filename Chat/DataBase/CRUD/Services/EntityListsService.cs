@@ -9,12 +9,9 @@ namespace DataBase.CRUD.Services
 {
     public class EntityListsService : IEntityListsService
     {
-        private readonly ChatDbContext _context;
+        private readonly ChatDbContext _context = new();
 
-        public EntityListsService(ChatDbContext context)
-        {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
-        }
+        public EntityListsService() { }
 
         public async Task<List<User>> GetAllUsersAsync()
         {

@@ -10,12 +10,9 @@ namespace DataBase.CRUD.Services
 {
     public class ChatDetailService : IChatDetailService
     {
-        private readonly ChatDbContext _context;
+        private readonly ChatDbContext _context = new();
 
-        public ChatDetailService(ChatDbContext context)
-        {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
-        }
+        public ChatDetailService() { }
 
         public async Task AddAsync(ChatDetail chatDetail)
         {
