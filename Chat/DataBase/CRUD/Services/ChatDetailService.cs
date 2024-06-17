@@ -18,6 +18,8 @@ namespace DataBase.CRUD.Services
         {
             if (chatDetail == null)
                 throw new ArgumentNullException(nameof(chatDetail));
+            if(GetAsync(chatDetail.User_1Id, chatDetail.User_2Id) != null)
+                throw new Exception("ChatDetail already exists");
 
             await _context.ChatDetails.AddAsync(chatDetail);
             await _context.SaveChangesAsync();
@@ -27,6 +29,8 @@ namespace DataBase.CRUD.Services
         {
             if (chatDetail == null)
                 throw new ArgumentNullException(nameof(chatDetail));
+            if(GetAsync(chatDetail.User_1Id, chatDetail.User_2Id) == null)
+                throw new Exception("ChatDetail does not exist");
 
             _context.ChatDetails.Remove(chatDetail);
             await _context.SaveChangesAsync();

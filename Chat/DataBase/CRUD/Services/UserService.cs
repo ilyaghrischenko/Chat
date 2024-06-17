@@ -17,6 +17,8 @@ namespace DataBase.CRUD.Services
         {
             if (user == null)
                 throw new ArgumentNullException(nameof(user));
+            if (GetAsync(user.Login, user.Password) != null)
+                throw new Exception("User already exists");
 
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
@@ -43,6 +45,8 @@ namespace DataBase.CRUD.Services
         {
             if (user == null)
                 throw new ArgumentNullException(nameof(user));
+            if (GetAsync(user.Login, user.Password) == null)
+                throw new Exception("User does not exist");
 
             var existingUser = await GetByIdAsync(user.Id);
             if (existingUser == null)
