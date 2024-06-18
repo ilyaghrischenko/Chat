@@ -10,7 +10,7 @@ public class User
     [StringLength(20, MinimumLength = 4)]
     public string Login { get; set; }
     [Required]
-    [StringLength(20, MinimumLength = 4)]
+    [StringLength(100, MinimumLength = 4)]
     public string Password { get; set; }
     [Required]
     [EmailAddress]

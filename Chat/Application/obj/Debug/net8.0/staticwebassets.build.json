@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fRTFybN84ouOisRtmgEqgCccMfbGZ1P8KG3xeSEUtM4=",
+  "Hash": "NeQ33cGbqHCihpzS/64nGNH5asXgvC//ln8QpRHs8gY=",
   "Source": "Application",
   "BasePath": "_content/Application",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\github\\Chat\\Chat\\Application\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Application.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\css\\chat.css",
+      "SourceId": "Application",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\",
+      "BasePath": "_content/Application",
+      "RelativePath": "css/chat.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\chat.css"
     },
     {
       "Identity": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\css\\site.css",

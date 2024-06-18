@@ -7,6 +7,7 @@
     <div class="register-box">
         <h2>Sign up</h2>
         <form asp-controller="Account" asp-action="SignUp" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="input-group">
                 <label asp-for="Login">Login</label>
                 <input asp-for="Login" type="text"/>
@@ -18,7 +19,7 @@
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="input-group">
-                <label asp-for="ConfirmPassword">ConfirmPassword</label>
+                <label asp-for="ConfirmPassword">Confirm password</label>
                 <input asp-for="ConfirmPassword" type="password"/>
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>

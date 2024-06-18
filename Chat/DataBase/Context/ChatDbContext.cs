@@ -7,6 +7,7 @@ namespace DataBase.Context;
 public class ChatDbContext : DbContext
 {
     public ChatDbContext() { }
+    public ChatDbContext(DbContextOptions<ChatDbContext> options) : base(options) { }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer

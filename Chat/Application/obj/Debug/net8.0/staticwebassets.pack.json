@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Application.bundle.scp.css"
     },
     {
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\css\\chat.css",
+      "PackagePath": "staticwebassets\\css\\chat.css"
+    },
+    {
       "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

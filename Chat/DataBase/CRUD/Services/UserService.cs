@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using DataBase.Context;
 using DataBase.CRUD.Interfaces;
 using DataBase.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace DataBase.CRUD.Services
 {
@@ -17,11 +18,20 @@ namespace DataBase.CRUD.Services
         {
             if (user == null)
                 throw new ArgumentNullException(nameof(user));
-            if (GetAsync(user.Login, user.Password) != null)
-                throw new Exception("User already exists");
 
-            await _context.Users.AddAsync(user);
-            await _context.SaveChangesAsync();
+            var existingUser = await _context.Users.FirstOrDefaultAsync(x => x.Login == user.Login);
+            if (existingUser != null)
+                throw new Exception("User with this login already exists");
+
+            try
+            {
+                await _context.Users.AddAsync(user);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to add user");
+            }
         }
 
         public async Task UpdateAsync(User user)
@@ -60,12 +70,18 @@ namespace DataBase.CRUD.Services
         {
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
                 throw new ArgumentNullException("Login and password must not be null or empty");
-
+            
             var user = await _context.Users
-                .FirstOrDefaultAsync(x => x.Login == login && x.Password == password);
-
+                .FirstOrDefaultAsync(x => x.Login == login);
+            
             if (user == null)
                 throw new Exception("User not found");
+            
+            PasswordHasher<User> hasher = new();
+            if (hasher.VerifyHashedPassword(user, user.Password, password) == 0)
+            {
+                throw new ArgumentException("Invalid password");
+            }
 
             return user;
         }
