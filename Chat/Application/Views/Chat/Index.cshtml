@@ -1,32 +1,93 @@
+@* @{ *@
+@*     ViewData["Title"] = "Chat"; *@
+@* } *@
+@* *@
+@* @section Styles { *@
+@*     <link rel="stylesheet" href="~/css/chat.css"> *@
+@* } *@
+@* *@
+@* <div class="sidebar"> *@
+@*     <div class="search-bar"> *@
+@*         <input type="text" placeholder="Search contacts"> *@
+@*     </div> *@
+@*     <div class="contact-list"> *@
+@*         <div class="contact">Contact 1</div> *@
+@*         <div class="contact">Contact 2</div> *@
+@*         <div class="contact">Contact 3</div> *@
+@*         <!-- Add more contacts as needed --> *@
+@*     </div> *@
+@* </div> *@
+@* <div class="chat"> *@
+@*     <div class="chat-header">Username1</div> *@
+@*     <div class="chat-window"> *@
+@*         <div class="message theirs"> *@
+@*             <div class="sender">Username1</div> *@
+@*             <div class="text">Hello! How are you?</div> *@
+@*             <div class="date">2024-06-18</div> *@
+@*         </div> *@
+@*         <div class="message mine"> *@
+@*             <div class="sender">Me</div> *@
+@*             <div class="text">I'm good, thanks! How about you?</div> *@
+@*             <div class="date">2024-06-18</div> *@
+@*         </div> *@
+@*         <!-- Add more messages as needed --> *@
+@*     </div> *@
+@*     <div class="message-input"> *@
+@*         <input type="text" placeholder="Type a message"> *@
+@*         <button>Send</button> *@
+@*     </div> *@
+@* </div> *@
+
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Application.Models.Chat.SendMessageViewModel
+@{
+    Layout = null;
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Messenger</title>
-    <link rel="stylesheet" href="css/chat.css">
+    <title>Chat</title>
+    <link rel="stylesheet" href="~/css/chat.css">
 </head>
 <body>
 <div class="container">
-    <h2>Messenger</h2>
-        
-    <div class="message">
-        <div class="meta">John Doe | 2024-06-18 15:30</div>
-        <div class="content">
-            Hello, how are you today?
+    <div class="sidebar">
+        <div class="search-bar">
+            <input type="text" placeholder="Search contacts">
+        </div>
+        <div class="contact-list">
+            <div class="contact">Contact 1</div>
+            <div class="contact">Contact 2</div>
+            <div class="contact">Contact 3</div>
+            <!-- Add more contacts as needed -->
         </div>
     </div>
-
-    <div class="message">
-        <div class="meta">Jane Smith | 2024-06-18 15:35</div>
-        <div class="content">
-            I'm good, thank you! How about you?
+    <div class="chat">
+        <div class="chat-header">Username1</div>
+        <div class="chat-window">
+            <div class="message theirs">
+                <div class="sender">Username1</div>
+                <div class="text">Hello! How are you?</div>
+                <div class="date">2024-06-18</div>
+            </div>
+            <div class="message mine">
+                <div class="sender">Me</div>
+                <div class="text">I'm good, thanks! How about you?</div>
+                <div class="date">2024-06-18</div>
+            </div>
+            <!-- Add more messages as needed -->
         </div>
-    </div>
-
-    <div class="input-group">
-        <input type="text" placeholder="Type your message...">
-        <button>Send</button>
+        @* <div class="message-input"> *@
+        @*     <input type="text" placeholder="Type a message"> *@
+        @*     <button>Send</button> *@
+        @* </div> *@
+        <form asp-controller="Chat" asp-action="SendMessage" method="post" class="message-input">
+            <input asp-for="Content" type="text" placeholder="Type a message">
+            <button>Send</button>
+        </form>
     </div>
 </div>
 </body>

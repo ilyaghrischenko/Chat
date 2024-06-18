@@ -58,9 +58,10 @@ public class AccountController : Controller
             return View(model);
         }
 
+        User user;
         try
         {
-            var user = await _userService.GetAsync(model.Login, model.Password);
+            user = await _userService.GetAsync(model.Login, model.Password);
         }
         catch (Exception ex)
         {
@@ -69,6 +70,7 @@ public class AccountController : Controller
             return View(model);
         }
 
+        TempData["UserId"] = (int)user.Id;
         return RedirectToAction("Index", "Chat");
     }
 

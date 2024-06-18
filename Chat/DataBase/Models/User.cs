@@ -23,4 +23,7 @@ public class User
         Password = password;
         Email = email;
     }
+
+    public override string ToString()
+        => $"{Login} - {Email}";
 }

@@ -4,7 +4,8 @@ namespace DataBase.Models;
 
 public class Message
 {
-    [Key] public uint Id { get; set; }
+    [Key]
+    public uint Id { get; set; }
     public ChatDetail ChatDetail { get; set; }
     public string MessageContent { get; set; }
     public User User { get; set; }
