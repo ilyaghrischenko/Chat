@@ -49,7 +49,7 @@ namespace DataBase.CRUD.Services
             return messages;
         }
 
-        public async Task<Message> GetByIdAsync(uint id)
+        public async Task<Message> GetByIdAsync(int id)
         {
             var message = await _context.Messages
                 .FirstOrDefaultAsync(x => x.Id == id);

@@ -86,7 +86,7 @@ namespace DataBase.CRUD.Services
             return user;
         }
 
-        public async Task<User> GetByIdAsync(uint id)
+        public async Task<User> GetByIdAsync(int id)
         {
             var user = await _context.Users
                 .FirstOrDefaultAsync(x => x.Id == id);

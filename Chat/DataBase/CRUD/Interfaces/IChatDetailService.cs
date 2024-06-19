@@ -7,7 +7,7 @@ namespace DataBase.CRUD.Interfaces
     {
         Task AddAsync(ChatDetail chatDetail);
         Task DeleteAsync(ChatDetail chatDetail);
-        Task<ChatDetail> GetAsync(uint user_1, uint user_2);
-        Task<ChatDetail> GetByIdAsync(uint id);
+        Task<ChatDetail> GetAsync(User user1, User user2);
+        Task<ChatDetail> GetByIdAsync(int id);
     }
 }

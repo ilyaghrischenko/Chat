@@ -17,36 +17,9 @@ public class AccountController : Controller
         _logger = logger;
     }
 
-    public async Task<bool> IsInternetAvailable()
-    {
-        try
-        {
-            using (var client = new HttpClient())
-            {
-                using (var response =
-                       await client.GetAsync("https://www.google.com", HttpCompletionOption.ResponseHeadersRead))
-                {
-                    return response.IsSuccessStatusCode;
-                }
-            }
-        }
-        catch
-        {
-            return false;
-        }
-    }
-
     [HttpGet]
-    public async Task<IActionResult> LogIn()
+    public IActionResult LogIn()
     {
-        if (!await IsInternetAvailable())
-        {
-            string ex = "No internet connection";
-            _logger.LogWarning(ex);
-            ModelState.AddModelError(string.Empty, ex);
-            return View();
-        }
-
         return View();
     }
 
@@ -70,21 +43,13 @@ public class AccountController : Controller
             return View(model);
         }
 
-        TempData["UserId"] = (int)user.Id;
+        TempData["UserId"] = user.Id;
         return RedirectToAction("Index", "Chat");
     }
 
     [HttpGet]
-    public async Task<IActionResult> SignUp()
+    public IActionResult SignUp()
     {
-        if (!await IsInternetAvailable())
-        {
-            string ex = "No internet connection";
-            _logger.LogWarning(ex);
-            ModelState.AddModelError(string.Empty, ex);
-            return View();
-        }
-
         return View();
     }
 

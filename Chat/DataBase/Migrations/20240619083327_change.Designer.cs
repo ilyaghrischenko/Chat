@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataBase.Migrations
 {
     [DbContext(typeof(ChatDbContext))]
-    [Migration("20240618064526_Change annotation in User")]
-    partial class ChangeannotationinUser
+    [Migration("20240619083327_change")]
+    partial class change
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,33 +27,42 @@ namespace DataBase.Migrations
 
             modelBuilder.Entity("DataBase.Models.ChatDetail", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<long>("User_1Id")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("User_2Id")
-                        .HasColumnType("bigint");
+                    b.Property<int>("User_1Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("User_2Id")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("User_1Id");
+
+                    b.HasIndex("User_2Id");
 
                     b.ToTable("ChatDetails");
                 });
 
             modelBuilder.Entity("DataBase.Models.Message", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<long>("ChatDetailId")
-                        .HasColumnType("bigint");
+                    b.Property<int>("ChatDetailId")
+                        .HasColumnType("int");
 
                     b.Property<string>("MessageContent")
                         .IsRequired()
@@ -62,8 +71,8 @@ namespace DataBase.Migrations
                     b.Property<DateTime>("MessageDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("UserId")
-                        .HasColumnType("bigint");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -76,11 +85,11 @@ namespace DataBase.Migrations
 
             modelBuilder.Entity("DataBase.Models.User", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -101,10 +110,33 @@ namespace DataBase.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("DataBase.Models.ChatDetail", b =>
+                {
+                    b.HasOne("DataBase.Models.User", null)
+                        .WithMany("Chats")
+                        .HasForeignKey("UserId");
+
+                    b.HasOne("DataBase.Models.User", "User1")
+                        .WithMany()
+                        .HasForeignKey("User_1Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DataBase.Models.User", "User2")
+                        .WithMany()
+                        .HasForeignKey("User_2Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User1");
+
+                    b.Navigation("User2");
+                });
+
             modelBuilder.Entity("DataBase.Models.Message", b =>
                 {
                     b.HasOne("DataBase.Models.ChatDetail", "ChatDetail")
-                        .WithMany()
+                        .WithMany("Messages")
                         .HasForeignKey("ChatDetailId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -112,12 +144,22 @@ namespace DataBase.Migrations
                     b.HasOne("DataBase.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("ChatDetail");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DataBase.Models.ChatDetail", b =>
+                {
+                    b.Navigation("Messages");
+                });
+
+            modelBuilder.Entity("DataBase.Models.User", b =>
+                {
+                    b.Navigation("Chats");
                 });
 #pragma warning restore 612, 618
         }

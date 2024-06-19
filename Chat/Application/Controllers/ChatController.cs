@@ -11,6 +11,7 @@ namespace Application.Controllers;
 public class ChatController : Controller
 {
     private readonly ILogger<ChatController> _logger;
+    
     private readonly UserService _userService = new();
     private User _user;
     private static readonly ConcurrentBag<StreamWriter> _clients = new ConcurrentBag<StreamWriter>();
@@ -18,6 +19,11 @@ public class ChatController : Controller
     public ChatController(ILogger<ChatController> logger)
     {
         _logger = logger;
+    }
+
+    private async Task<User> GetUser()
+    {
+        return await _userService.GetByIdAsync(int.Parse(TempData["UserId"].ToString()));
     }
 
     [HttpGet]
@@ -29,8 +35,8 @@ public class ChatController : Controller
     [HttpPost]
     public async Task<IActionResult> SendMessage(SendMessageViewModel model)
     {
-        _user = await _userService.GetByIdAsync((uint)TempData["UserId"]);
         model.Date = DateTime.Now;
+        _user = await GetUser();
         
         var fullMessage = $"{model.Date}: {model.Content}\n\n";
         var data = Encoding.UTF8.GetBytes(model.Content);

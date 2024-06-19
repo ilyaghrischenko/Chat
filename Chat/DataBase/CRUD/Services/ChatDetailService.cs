@@ -18,7 +18,7 @@ namespace DataBase.CRUD.Services
         {
             if (chatDetail == null)
                 throw new ArgumentNullException(nameof(chatDetail));
-            if(GetAsync(chatDetail.User_1Id, chatDetail.User_2Id) != null)
+            if (await GetAsync(chatDetail.User1, chatDetail.User2) != null)
                 throw new Exception("ChatDetail already exists");
 
             await _context.ChatDetails.AddAsync(chatDetail);
@@ -29,17 +29,17 @@ namespace DataBase.CRUD.Services
         {
             if (chatDetail == null)
                 throw new ArgumentNullException(nameof(chatDetail));
-            if(GetAsync(chatDetail.User_1Id, chatDetail.User_2Id) == null)
+            if (await GetAsync(chatDetail.User1, chatDetail.User2) == null)
                 throw new Exception("ChatDetail does not exist");
 
             _context.ChatDetails.Remove(chatDetail);
             await _context.SaveChangesAsync();
         }
 
-        public async Task<ChatDetail> GetAsync(uint user_1, uint user_2)
+        public async Task<ChatDetail> GetAsync(User user1, User user2)
         {
             var chatDetail = await _context.ChatDetails
-                .FirstOrDefaultAsync(x => x.User_1Id == user_1 && x.User_2Id == user_2);
+                .FirstOrDefaultAsync(x => x.User1.Id == user1.Id && x.User2.Id == user2.Id);
 
             if (chatDetail == null)
                 throw new Exception("ChatDetail does not exist");
@@ -47,7 +47,7 @@ namespace DataBase.CRUD.Services
             return chatDetail;
         }
 
-        public async Task<ChatDetail> GetByIdAsync(uint id)
+        public async Task<ChatDetail> GetByIdAsync(int id)
         {
             var chatDetail = await _context.ChatDetails
                 .FirstOrDefaultAsync(x => x.Id == id);

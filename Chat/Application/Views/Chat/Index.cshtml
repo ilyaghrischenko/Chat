@@ -62,7 +62,6 @@
             <div class="contact">Contact 1</div>
             <div class="contact">Contact 2</div>
             <div class="contact">Contact 3</div>
-            <!-- Add more contacts as needed -->
         </div>
     </div>
     <div class="chat">
@@ -78,12 +77,7 @@
                 <div class="text">I'm good, thanks! How about you?</div>
                 <div class="date">2024-06-18</div>
             </div>
-            <!-- Add more messages as needed -->
         </div>
-        @* <div class="message-input"> *@
-        @*     <input type="text" placeholder="Type a message"> *@
-        @*     <button>Send</button> *@
-        @* </div> *@
         <form asp-controller="Chat" asp-action="SendMessage" method="post" class="message-input">
             <input asp-for="Content" type="text" placeholder="Type a message">
             <button>Send</button>

@@ -9,6 +9,6 @@ namespace DataBase.CRUD.Interfaces
         Task UpdateAsync(User user);
         Task DeleteAsync(User user);
         Task<User> GetAsync(string login, string password);
-        Task<User> GetByIdAsync(uint id);
+        Task<User> GetByIdAsync(int id);
     }
 }

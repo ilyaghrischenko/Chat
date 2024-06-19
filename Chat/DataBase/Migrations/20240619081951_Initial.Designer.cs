@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataBase.Migrations
 {
     [DbContext(typeof(ChatDbContext))]
-    [Migration("20240618102212_Add list messages to ChatDetail")]
-    partial class AddlistmessagestoChatDetail
+    [Migration("20240619081951_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,33 +27,38 @@ namespace DataBase.Migrations
 
             modelBuilder.Entity("DataBase.Models.ChatDetail", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<long>("User_1Id")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("User_2Id")
-                        .HasColumnType("bigint");
+                    b.Property<int>("User_1Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("User_2Id")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("ChatDetails");
                 });
 
             modelBuilder.Entity("DataBase.Models.Message", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<long>("ChatDetailId")
-                        .HasColumnType("bigint");
+                    b.Property<int>("ChatDetailId")
+                        .HasColumnType("int");
 
                     b.Property<string>("MessageContent")
                         .IsRequired()
@@ -62,8 +67,8 @@ namespace DataBase.Migrations
                     b.Property<DateTime>("MessageDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("UserId")
-                        .HasColumnType("bigint");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -76,11 +81,11 @@ namespace DataBase.Migrations
 
             modelBuilder.Entity("DataBase.Models.User", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -99,6 +104,13 @@ namespace DataBase.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("DataBase.Models.ChatDetail", b =>
+                {
+                    b.HasOne("DataBase.Models.User", null)
+                        .WithMany("Chats")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("DataBase.Models.Message", b =>
@@ -123,6 +135,11 @@ namespace DataBase.Migrations
             modelBuilder.Entity("DataBase.Models.ChatDetail", b =>
                 {
                     b.Navigation("Messages");
+                });
+
+            modelBuilder.Entity("DataBase.Models.User", b =>
+                {
+                    b.Navigation("Chats");
                 });
 #pragma warning restore 612, 618
         }

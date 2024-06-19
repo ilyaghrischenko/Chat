@@ -9,6 +9,6 @@ namespace DataBase.CRUD.Interfaces
         Task AddAsync(Message message);
         Task DeleteAsync(Message message);
         Task<List<Message>> GetAsync(ChatDetail chatDetail);
-        Task<Message> GetByIdAsync(uint id);
+        Task<Message> GetByIdAsync(int id);
     }
 }
