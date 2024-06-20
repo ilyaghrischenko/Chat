@@ -1,47 +1,20 @@
-@* @{ *@
-@*     ViewData["Title"] = "Chat"; *@
-@* } *@
-@* *@
-@* @section Styles { *@
-@*     <link rel="stylesheet" href="~/css/chat.css"> *@
-@* } *@
-@* *@
-@* <div class="sidebar"> *@
-@*     <div class="search-bar"> *@
-@*         <input type="text" placeholder="Search contacts"> *@
-@*     </div> *@
-@*     <div class="contact-list"> *@
-@*         <div class="contact">Contact 1</div> *@
-@*         <div class="contact">Contact 2</div> *@
-@*         <div class="contact">Contact 3</div> *@
-@*         <!-- Add more contacts as needed --> *@
-@*     </div> *@
-@* </div> *@
-@* <div class="chat"> *@
-@*     <div class="chat-header">Username1</div> *@
-@*     <div class="chat-window"> *@
-@*         <div class="message theirs"> *@
-@*             <div class="sender">Username1</div> *@
-@*             <div class="text">Hello! How are you?</div> *@
-@*             <div class="date">2024-06-18</div> *@
-@*         </div> *@
-@*         <div class="message mine"> *@
-@*             <div class="sender">Me</div> *@
-@*             <div class="text">I'm good, thanks! How about you?</div> *@
-@*             <div class="date">2024-06-18</div> *@
-@*         </div> *@
-@*         <!-- Add more messages as needed --> *@
-@*     </div> *@
-@*     <div class="message-input"> *@
-@*         <input type="text" placeholder="Type a message"> *@
-@*         <button>Send</button> *@
-@*     </div> *@
-@* </div> *@
-
+@using DataBase.Context
+@using DataBase.CRUD.Services
 @using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.EntityFrameworkCore
 @model Application.Models.Chat.SendMessageViewModel
 @{
     Layout = null;
+
+    ChatDbContext db = new();
+    UserService userService = new();
+    var user = await userService.GetByIdAsync(int.Parse(TempData["UserId"].ToString()));
+    //
+    var chat = await db.ChatDetails.FirstAsync(c => c.Id == 1);
+    var messages = await db.Messages
+        .Include(m => m.User)
+        .Where(m => m.ChatDetail == chat)
+        .ToListAsync();
 }
 
 <!DOCTYPE html>
@@ -65,18 +38,25 @@
         </div>
     </div>
     <div class="chat">
-        <div class="chat-header">Username1</div>
+        <div class="chat-header">@((chat.User1.Login == user.Login)?@chat.User2.Login:@chat.User1.Login)</div>
         <div class="chat-window">
-            <div class="message theirs">
-                <div class="sender">Username1</div>
-                <div class="text">Hello! How are you?</div>
-                <div class="date">2024-06-18</div>
-            </div>
-            <div class="message mine">
-                <div class="sender">Me</div>
-                <div class="text">I'm good, thanks! How about you?</div>
-                <div class="date">2024-06-18</div>
-            </div>
+            @foreach (var item in messages)
+            {
+                if (item.UserId == user.Id)
+                {
+                    <div class="message mine">
+                        <div class="text">@item.MessageContent</div>
+                        <div class="date">@item.MessageDate</div>
+                    </div>
+                }
+                else
+                {
+                    <div class="message theirs">
+                        <div class="text">@item.MessageContent</div>
+                        <div class="date">@item.MessageDate</div>
+                    </div>
+                }
+            }
         </div>
         <form asp-controller="Chat" asp-action="SendMessage" method="post" class="message-input">
             <input asp-for="Content" type="text" placeholder="Type a message">

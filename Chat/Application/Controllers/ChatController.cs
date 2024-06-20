@@ -1,9 +1,11 @@
 using System.Collections.Concurrent;
 using System.Text;
 using Application.Models.Chat;
+using DataBase.Context;
 using DataBase.CRUD.Services;
 using DataBase.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Application.Controllers;
@@ -36,15 +38,12 @@ public class ChatController : Controller
     public async Task<IActionResult> SendMessage(SendMessageViewModel model)
     {
         model.Date = DateTime.Now;
-        _user = await GetUser();
-        
-        var fullMessage = $"{model.Date}: {model.Content}\n\n";
-        var data = Encoding.UTF8.GetBytes(model.Content);
-        foreach (var item in _clients)
-        {
-            await item.WriteAsync($"data: {fullMessage}\n\n");
-            await item.FlushAsync();
-        }
+        _user = await _userService.GetByIdAsync(int.Parse(TempData["UserId"].ToString()));
+        Message message = new(model.ChatDetail, model.Content, _user, model.Date);
+        ChatDbContext db = new();
+        model.ChatDetail = await db.ChatDetails.FirstAsync(c => c.Id == 1);
+        await db.AddAsync(message);
+        await db.SaveChangesAsync();
 
         return View("Index");
     }
