@@ -38,11 +38,12 @@ public class ChatController : Controller
     public async Task<IActionResult> SendMessage(SendMessageViewModel model)
     {
         model.Date = DateTime.Now;
-        _user = await _userService.GetByIdAsync(int.Parse(TempData["UserId"].ToString()));
-        Message message = new(model.ChatDetail, model.Content, _user, model.Date);
         ChatDbContext db = new();
         model.ChatDetail = await db.ChatDetails.FirstAsync(c => c.Id == 1);
-        await db.AddAsync(message);
+        _user = await _userService.GetByIdAsync(int.Parse(TempData["UserId"].ToString()));
+        Message message = new(model.ChatDetail, model.Content, db.Users.FirstOrDefault(u => u.Id == _user.Id), model.Date);
+        model.ChatDetail = await db.ChatDetails.FirstAsync(c => c.Id == 1);
+        await db.Messages.AddAsync(message);
         await db.SaveChangesAsync();
 
         return View("Index");

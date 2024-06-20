@@ -9,6 +9,7 @@
     ChatDbContext db = new();
     UserService userService = new();
     var user = await userService.GetByIdAsync(int.Parse(TempData["UserId"].ToString()));
+    TempData["UserId"] = user.Id;
     //
     var chat = await db.ChatDetails.FirstAsync(c => c.Id == 1);
     var messages = await db.Messages
