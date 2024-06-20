@@ -16,7 +16,6 @@ public class ChatController : Controller
     
     private readonly UserService _userService = new();
     private User _user;
-    private static readonly ConcurrentBag<StreamWriter> _clients = new ConcurrentBag<StreamWriter>();
     
     public ChatController(ILogger<ChatController> logger)
     {
@@ -41,7 +40,7 @@ public class ChatController : Controller
         ChatDbContext db = new();
         model.ChatDetail = await db.ChatDetails.FirstAsync(c => c.Id == 1);
         _user = await _userService.GetByIdAsync(int.Parse(TempData["UserId"].ToString()));
-        Message message = new(model.ChatDetail, model.Content, db.Users.FirstOrDefault(u => u.Id == _user.Id), model.Date);
+        Message message = new(model.ChatDetail, model.Content, await db.Users.FirstAsync(u => u.Id == _user.Id), model.Date);
         model.ChatDetail = await db.ChatDetails.FirstAsync(c => c.Id == 1);
         await db.Messages.AddAsync(message);
         await db.SaveChangesAsync();
