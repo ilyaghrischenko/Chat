@@ -13,13 +13,22 @@ namespace Application.Controllers;
 public class ChatController : Controller
 {
     private readonly ILogger<ChatController> _logger;
-    
+
     private readonly UserService _userService = new();
     private User _user;
-    
+
     public ChatController(ILogger<ChatController> logger)
     {
         _logger = logger;
+    }
+
+    private async Task<IActionResult> Reload()
+    {
+        while (true)
+        {
+            await Task.Delay(10000);
+            return View("Index");
+        }
     }
 
     private async Task<User> GetUser()
@@ -30,6 +39,7 @@ public class ChatController : Controller
     [HttpGet]
     public IActionResult Index()
     {
+        Reload();
         return View();
     }
 
@@ -40,11 +50,12 @@ public class ChatController : Controller
         ChatDbContext db = new();
         model.ChatDetail = await db.ChatDetails.FirstAsync(c => c.Id == 1);
         _user = await _userService.GetByIdAsync(int.Parse(TempData["UserId"].ToString()));
-        Message message = new(model.ChatDetail, model.Content, await db.Users.FirstAsync(u => u.Id == _user.Id), model.Date);
+        Message message = new(model.ChatDetail, model.Content, await db.Users.FirstAsync(u => u.Id == _user.Id),
+            model.Date);
         model.ChatDetail = await db.ChatDetails.FirstAsync(c => c.Id == 1);
         await db.Messages.AddAsync(message);
         await db.SaveChangesAsync();
 
-        return View("Index");
+        return RedirectToAction("Index");
     }
 }
