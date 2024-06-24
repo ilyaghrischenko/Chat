@@ -22,15 +22,6 @@ public class ChatController : Controller
         _logger = logger;
     }
 
-    private async Task<IActionResult> Reload()
-    {
-        while (true)
-        {
-            await Task.Delay(10000);
-            return View("Index");
-        }
-    }
-
     private async Task<User> GetUser()
     {
         return await _userService.GetByIdAsync(int.Parse(TempData["UserId"].ToString()));
@@ -39,7 +30,6 @@ public class ChatController : Controller
     [HttpGet]
     public IActionResult Index()
     {
-        Reload();
         return View();
     }
 

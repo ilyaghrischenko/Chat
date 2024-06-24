@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="chat">
-        <div class="chat-header">@((chat.User1.Login == user.Login)?@chat.User2.Login:@chat.User1.Login)</div>
+        <div class="chat-header">@((chat.User1.Login == user.Login)?chat.User2.Login:chat.User1.Login)</div>
         <div class="chat-window">
             @foreach (var item in messages)
             {
