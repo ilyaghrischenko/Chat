@@ -1,5 +1,5 @@
 @using DataBase.Context
-@using DataBase.CRUD.Services
+@using DataBase.CRUD.Repositories
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @using Microsoft.EntityFrameworkCore
 @model Application.Models.Chat.SendMessageViewModel
@@ -7,8 +7,8 @@
     Layout = null;
 
     ChatDbContext db = new();
-    UserService userService = new();
-    var user = await userService.GetByIdAsync(int.Parse(TempData["UserId"].ToString()));
+    UserRepository userRepository = new();
+    var user = await userRepository.Get(int.Parse(TempData["UserId"].ToString()));
     TempData["UserId"] = user.Id;
     //
     var chat = await db.ChatDetails.FirstAsync(c => c.Id == 4);

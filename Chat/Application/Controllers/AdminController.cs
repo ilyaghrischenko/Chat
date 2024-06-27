@@ -1,5 +1,5 @@
 using DataBase.Context;
-using DataBase.CRUD.Services;
+using DataBase.CRUD.Repositories;
 using DataBase.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,12 +9,12 @@ namespace Application.Controllers;
 public class AdminController : Controller
 {
     private readonly ChatDbContext _context = new();
-    private readonly EntityListsService _entityListsService = new();
+    private readonly EntityListsRepository _entityListsRepository = new();
     
     [HttpGet]
     public async Task<IActionResult> Index()
     {
-        List<User> users = await _entityListsService.GetAllUsersAsync();
+        List<User> users = await _entityListsRepository.GetAllUsers();
         return View(users);
     }
     

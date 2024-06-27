@@ -1,7 +1,19 @@
+using Application.Services.ControllerServices;
+using Application.Services.ControllerServices.Interfaces;
+using Application.Services.DataBaseServices;
+using Application.Services.DataBaseServices.Interfaces;
 using DataBase.Context;
+using DataBase.CRUD.Interfaces;
+using DataBase.CRUD.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IAccountControllerService, AccountControllerService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -1,22 +1,16 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Application.Models;
-using DataBase.CRUD.Services;
+using Application.Services.ControllerServices.Interfaces;
+using DataBase.CRUD.Repositories;
 using DataBase.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace Application.Controllers;
 
-public class AccountController : Controller
+public class AccountController(ILogger<AccountController> logger, IAccountControllerService accountControllerService)
+    : Controller
 {
-    private readonly ILogger<AccountController> _logger;
-    private readonly UserService _userService = new();
-
-    public AccountController(ILogger<AccountController> logger)
-    {
-        _logger = logger;
-    }
-
     [HttpGet]
     public IActionResult LogIn()
     {
@@ -31,25 +25,18 @@ public class AccountController : Controller
             return View(model);
         }
 
-        if (model.Login == "Admin" && model.Password == "123456")
-        {
-            return RedirectToAction("Index", "Admin");
-        }
-
-        User user;
         try
         {
-            user = await _userService.GetAsync(model.Login, model.Password);
+            var user = await accountControllerService.LogInAsync(model);
+            TempData["UserId"] = user.Id;
+            return RedirectToAction("Index", "Chat");
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "An error occurred while logging in.");
+            logger.LogError(ex, "An error occurred while logging in.");
             ModelState.AddModelError(string.Empty, ex.Message);
             return View(model);
         }
-
-        TempData["UserId"] = user.Id;
-        return RedirectToAction("Index", "Chat");
     }
 
     [HttpGet]
@@ -65,20 +52,13 @@ public class AccountController : Controller
         {
             return View(model);
         }
-
         try
         {
-            PasswordHasher<SignUpViewModel> _passwordHasher = new();
-            await _userService.AddAsync(new User
-            {
-                Login = model.Login,
-                Email = model.Email,
-                Password = _passwordHasher.HashPassword(model, model.Password)
-            });
+            await accountControllerService.SignUpAsync(model);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "An error occurred while signing up.");
+            logger.LogError(ex, "An error occurred while signing up.");
             ModelState.AddModelError(string.Empty, ex.Message);
             return View(model);
         }
