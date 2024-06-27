@@ -44,7 +44,7 @@ public class ChatController : Controller
         
         model.Date = DateTime.Now;
         ChatDbContext db = new();
-        model.ChatDetail = await db.ChatDetails.FirstAsync(c => c.Id == 1);
+        model.ChatDetail = await db.ChatDetails.FirstAsync(c => c.Id == int.Parse(TempData["ChatId"].ToString()));
         _user = await _userRepository.Get(int.Parse(TempData["UserId"].ToString()));
         Message message = new(model.ChatDetail, model.Content, await db.Users.FirstAsync(u => u.Id == _user.Id),
             model.Date);
