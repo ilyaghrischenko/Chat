@@ -33,7 +33,6 @@ public class AccountController(ILogger<AccountController> logger, IAccountContro
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, "An error occurred while logging in.");
             ModelState.AddModelError(string.Empty, ex.Message);
             return View(model);
         }
@@ -58,7 +57,6 @@ public class AccountController(ILogger<AccountController> logger, IAccountContro
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, "An error occurred while signing up.");
             ModelState.AddModelError(string.Empty, ex.Message);
             return View(model);
         }

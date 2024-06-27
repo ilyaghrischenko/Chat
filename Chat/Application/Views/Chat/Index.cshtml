@@ -1,21 +1,33 @@
+@using Application.Models.Chat
+@using Application.Services.DataBaseServices
 @using DataBase.Context
 @using DataBase.CRUD.Repositories
+@using DataBase.Models
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @using Microsoft.EntityFrameworkCore
 @model Application.Models.Chat.SendMessageViewModel
 @{
     Layout = null;
 
-    ChatDbContext db = new();
-    UserRepository userRepository = new();
-    var user = await userRepository.Get(int.Parse(TempData["UserId"].ToString()));
+    UserService userService = new(new UserRepository());
+    ChatDetailService chatDetailService = new(new ChatDetailRepository());
+    MessageService messageService = new(new MessageRepository());
+
+    var user = await userService.Get(int.Parse(TempData["UserId"].ToString()));
     TempData["UserId"] = user.Id;
-    //
-    var chat = await db.ChatDetails.FirstAsync(c => c.Id == 4);
-    var messages = await db.Messages
-        .Include(m => m.User)
-        .Where(m => m.ChatDetail == chat)
-        .ToListAsync();
+
+    var chats = await chatDetailService.GetAllForUser(user.Id);
+    ChatDetail? currentChat = TempData["ChatId"] != null ? await chatDetailService.Get(int.Parse(TempData["ChatId"].ToString())) : null;
+
+    List<ContactViewModel> contacts = new();
+    foreach (var chat in chats)
+    {
+        if (chat.Id == currentChat?.Id) continue;
+
+        var contactUserId = chat.User_1Id == user.Id ? chat.User_2Id : chat.User_1Id;
+        var contactUser = await userService.Get(contactUserId);
+        contacts.Add(new(contactUser.Login, chat.Id));
+    }
 }
 
 <!DOCTYPE html>
@@ -33,37 +45,52 @@
             <input type="text" placeholder="Search contacts">
         </div>
         <div class="contact-list">
-            <a asp-controller="Chat" asp-action="Index"><div class="contact">Contact 1</div></a>
-            <a asp-controller="Chat" asp-action="Index"><div class="contact">Contact 2</div></a>
-            <a asp-controller="Chat" asp-action="Index"><div class="contact">Contact 3</div></a>
-        </div>
-        <button class="floating-button">+</button>
-    </div>
-    <div class="chat">
-        <div class="chat-header">@((chat.User1.Login == user.Login)?chat.User2.Login:chat.User1.Login)</div>
-        <div class="chat-window">
-            @foreach (var item in messages)
+            @foreach (var contact in contacts)
             {
-                if (item.UserId == user.Id)
-                {
-                    <div class="message mine">
-                        <div class="text">@item.MessageContent</div>
-                        <div class="date">@item.MessageDate</div>
-                    </div>
-                }
-                else
-                {
-                    <div class="message theirs">
-                        <div class="text">@item.MessageContent</div>
-                        <div class="date">@item.MessageDate</div>
-                    </div>
-                }
+                <a asp-controller="Chat" asp-action="Index" asp-route-id="@contact.ChatDetailId">
+                    <div class="contact">@contact</div>
+                </a>
             }
         </div>
-        <form asp-controller="Chat" asp-action="SendMessage" method="post" class="message-input">
-            <input asp-for="Content" type="text" placeholder="Type a message">
-            <button>Send</button>
-        </form>
+        <div class="newChatButton">
+            <button class="floating-button">+</button>
+        </div>
+    </div>
+    <div class="chat">
+        @if (currentChat == null)
+        {
+        }
+        else
+        {
+            var messages = await messageService.GetByChatDetail(currentChat);
+            var user1 = await userService.Get(currentChat.User_1Id);
+            var user2 = await userService.Get(currentChat.User_2Id);
+
+            <div class="chat-header">@((user1.Login == user.Login) ? user2.Login : user1.Login)</div>
+            <div class="chat-window">
+                @foreach (var item in messages)
+                {
+                    if (item.UserId == user.Id)
+                    {
+                        <div class="message mine">
+                            <div class="text">@item.MessageContent</div>
+                            <div class="date">@item.MessageDate</div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="message theirs">
+                            <div class="text">@item.MessageContent</div>
+                            <div class="date">@item.MessageDate</div>
+                        </div>
+                    }
+                }
+            </div>
+            <form asp-controller="Chat" asp-action="SendMessage" method="post" class="message-input">
+                <input asp-for="Content" type="text" placeholder="Type a message">
+                <button>Send</button>
+            </form>
+        }
     </div>
 </div>
 
