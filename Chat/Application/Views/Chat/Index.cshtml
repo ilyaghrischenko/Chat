@@ -33,9 +33,9 @@
             <input type="text" placeholder="Search contacts">
         </div>
         <div class="contact-list">
-            <a asp-controller="Chat" asp-action="Index"><div>Contact 1</div></a>
-            <a asp-controller="Chat" asp-action="Index"><div>Contact 2</div></a>
-            <a asp-controller="Chat" asp-action="Index"><div>Contact 3</div></a>
+            <a asp-controller="Chat" asp-action="Index"><div class="contact">Contact 1</div></a>
+            <a asp-controller="Chat" asp-action="Index"><div class="contact">Contact 2</div></a>
+            <a asp-controller="Chat" asp-action="Index"><div class="contact">Contact 3</div></a>
         </div>
         <button class="floating-button">+</button>
     </div>
@@ -66,5 +66,7 @@
         </form>
     </div>
 </div>
+
+<script src="~/js/search.js"></script>
 </body>
 </html>

@@ -22,11 +22,6 @@ public class ChatController : Controller
         _logger = logger;
     }
 
-    private async Task<User> GetUser()
-    {
-        return await _userService.GetByIdAsync(int.Parse(TempData["UserId"].ToString()));
-    }
-
     [HttpGet]
     public IActionResult Index()
     {
