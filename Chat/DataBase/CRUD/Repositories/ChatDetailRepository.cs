@@ -26,12 +26,11 @@ namespace DataBase.CRUD.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<ChatDetail> GetWithUsers(User user1, User user2) => 
-            await _context.ChatDetails
-                .FirstOrDefaultAsync(x => x.User1.Id.Equals(user1.Id) 
-                                          && x.User2.Id.Equals(user2.Id));
+        public async Task<ChatDetail?> GetWithUsers(User user1, User user2) => 
+            await _context.ChatDetails.FirstOrDefaultAsync(x => x.User1.Id.Equals(user1.Id) 
+                                                                && x.User2.Id.Equals(user2.Id));
 
-        public async Task<ChatDetail> Get(int id) =>
+        public async Task<ChatDetail?> Get(int id) =>
             await _context.ChatDetails
                 .FirstOrDefaultAsync(x => x.Id == id);
         

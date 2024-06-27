@@ -9,6 +9,6 @@ namespace DataBase.CRUD.Interfaces
         Task Insert(Message message);
         Task Delete(Message message);
         Task<List<Message>> GetByChatDetail(ChatDetail chatDetail);
-        Task<Message> Get(int id);
+        Task<Message?> Get(int id);
     }
 }

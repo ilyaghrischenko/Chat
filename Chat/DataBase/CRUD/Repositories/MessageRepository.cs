@@ -33,8 +33,6 @@ namespace DataBase.CRUD.Repositories
                 .Where(x => x.ChatDetail == chatDetail)
                 .ToListAsync();
 
-        public async Task<Message> Get(int id) =>
-             await _context.Messages
-                .FirstOrDefaultAsync(x => x.Id == id);
+        public async Task<Message?> Get(int id) => await _context.Messages.FirstOrDefaultAsync(x => x.Id == id);
     }
 }

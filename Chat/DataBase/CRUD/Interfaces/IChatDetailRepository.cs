@@ -7,8 +7,8 @@ namespace DataBase.CRUD.Interfaces
     {
         Task Insert(ChatDetail chatDetail);
         Task Delete(ChatDetail chatDetail);
-        Task<ChatDetail> GetWithUsers(User user1, User user2);
-        Task<ChatDetail> Get(int id);
+        Task<ChatDetail?> GetWithUsers(User user1, User user2);
+        Task<ChatDetail?> Get(int id);
         Task<List<ChatDetail>> GetAllForUser(int userId);
     }
 }

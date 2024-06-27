@@ -56,6 +56,6 @@ namespace DataBase.CRUD.Repositories
 
         public async Task<User?> GetByLogin(string login) => await _context.Users.FirstOrDefaultAsync(x => x.Login.Equals(login));
 
-        public async Task<User> Get(int id) => await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+        public async Task<User?> Get(int id) => await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
     }
 }
