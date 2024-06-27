@@ -57,11 +57,9 @@
         </div>
     </div>
     <div class="chat">
-        @if (currentChat == null)
+        @if (currentChat != null)
         {
-        }
-        else
-        {
+            TempData["ChatId"] = currentChat.Id;
             var messages = await messageService.GetByChatDetail(currentChat);
             var user1 = await userService.Get(currentChat.User_1Id);
             var user2 = await userService.Get(currentChat.User_2Id);
