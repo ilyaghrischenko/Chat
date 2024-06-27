@@ -70,20 +70,10 @@
             <div class="chat-window">
                 @foreach (var item in messages)
                 {
-                    if (item.UserId == user.Id)
-                    {
-                        <div class="message mine">
-                            <div class="text">@item.MessageContent</div>
-                            <div class="date">@item.MessageDate</div>
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="message theirs">
-                            <div class="text">@item.MessageContent</div>
-                            <div class="date">@item.MessageDate</div>
-                        </div>
-                    }
+                    <div class="@(item.UserId == user.Id ? "message mine" : "message theirs")">
+                        <div class="text">@item.MessageContent</div>
+                        <div class="date">@item.MessageDate</div>
+                    </div>
                 }
             </div>
             <form asp-controller="Chat" asp-action="SendMessage" method="post" class="message-input">
