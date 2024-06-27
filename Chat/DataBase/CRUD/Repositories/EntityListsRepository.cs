@@ -5,25 +5,25 @@ using DataBase.Context;
 using DataBase.CRUD.Interfaces;
 using DataBase.Models;
 
-namespace DataBase.CRUD.Services
+namespace DataBase.CRUD.Repositories
 {
-    public class EntityListsService : IEntityListsService
+    public class EntityListsRepository : IEntityListsRepository
     {
         private readonly ChatDbContext _context = new();
 
-        public EntityListsService() { }
+        public EntityListsRepository() { }
 
-        public async Task<List<User>> GetAllUsersAsync()
+        public async Task<List<User>> GetAllUsers()
         {
             return await _context.Users.ToListAsync();
         }
 
-        public async Task<List<Message>> GetAllMessagesAsync()
+        public async Task<List<Message>> GetAllMessages()
         {
             return await _context.Messages.ToListAsync();
         }
 
-        public async Task<List<ChatDetail>> GetAllChatDetailsAsync()
+        public async Task<List<ChatDetail>> GetAllChatDetails()
         {
             return await _context.ChatDetails.ToListAsync();
         }

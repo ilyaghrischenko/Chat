@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Application.Models;
-using DataBase.CRUD.Services;
+using DataBase.CRUD.Repositories;
 using DataBase.Models;
 using Microsoft.AspNetCore.Identity;
 
@@ -10,7 +10,7 @@ namespace Application.Controllers;
 public class AccountController : Controller
 {
     private readonly ILogger<AccountController> _logger;
-    private readonly UserService _userService = new();
+    private readonly UserRepository _userRepository = new();
 
     public AccountController(ILogger<AccountController> logger)
     {
@@ -39,7 +39,7 @@ public class AccountController : Controller
         User user;
         try
         {
-            user = await _userService.GetAsync(model.Login, model.Password);
+            user = await _userRepository.GetByLogin(model.Login);
         }
         catch (Exception ex)
         {
@@ -69,7 +69,7 @@ public class AccountController : Controller
         try
         {
             PasswordHasher<SignUpViewModel> _passwordHasher = new();
-            await _userService.AddAsync(new User
+            await _userRepository.Insert(new User
             {
                 Login = model.Login,
                 Email = model.Email,
