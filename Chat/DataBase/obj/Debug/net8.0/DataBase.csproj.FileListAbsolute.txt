@@ -28,7 +28,3 @@ C:\github\Chat\Chat\DataBase\obj\Debug\net8.0\refint\DataBase.dll
 C:\github\Chat\Chat\DataBase\obj\Debug\net8.0\DataBase.pdb
 C:\github\Chat\Chat\DataBase\obj\Debug\net8.0\DataBase.genruntimeconfig.cache
 C:\github\Chat\Chat\DataBase\obj\Debug\net8.0\ref\DataBase.dll
-C:\github\Chat\Chat\DataBase\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
-C:\github\Chat\Chat\DataBase\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-C:\github\Chat\Chat\DataBase\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
-C:\github\Chat\Chat\DataBase\obj\Debug\net8.0\DataBase.csproj.Up2Date

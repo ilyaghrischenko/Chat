@@ -30,8 +30,8 @@ public class AccountController : Controller
         {
             return View(model);
         }
-        
-        if(model.Login == "Admin" && model.Password == "123456")
+
+        if (model.Login == "Admin" && model.Password == "123456")
         {
             return RedirectToAction("Index", "Admin");
         }

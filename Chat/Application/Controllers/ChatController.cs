@@ -36,6 +36,11 @@ public class ChatController : Controller
     [HttpPost]
     public async Task<IActionResult> SendMessage(SendMessageViewModel model)
     {
+        if (!ModelState.IsValid)
+        {
+            return RedirectToAction("Index");
+        }
+
         model.Date = DateTime.Now;
         ChatDbContext db = new();
         model.ChatDetail = await db.ChatDetails.FirstAsync(c => c.Id == 1);

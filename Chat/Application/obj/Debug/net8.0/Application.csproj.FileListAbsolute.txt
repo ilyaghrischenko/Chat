@@ -152,3 +152,7 @@ O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\Application\obj\Debug\net8.0\refint\
 O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\Application\obj\Debug\net8.0\Application.pdb
 O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\Application\obj\Debug\net8.0\Application.genruntimeconfig.cache
 O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\Application\obj\Debug\net8.0\ref\Application.dll
+C:\github\Chat\Chat\Application\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\github\Chat\Chat\Application\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\github\Chat\Chat\Application\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+C:\github\Chat\Chat\Application\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
