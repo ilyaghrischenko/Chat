@@ -1,6 +1,7 @@
 using System.Collections.Concurrent;
 using System.Text;
 using Application.Models.Chat;
+using Application.Services.DataBaseServices;
 using DataBase.Context;
 using DataBase.CRUD.Repositories;
 using DataBase.Models;
@@ -15,16 +16,13 @@ public class ChatController : Controller
     private readonly ILogger<ChatController> _logger;
 
     private readonly UserRepository _userRepository = new();
+    private readonly UserService _userService = new(new UserRepository());
+    private readonly ChatDetailService _chatService = new(new ChatDetailRepository());
     private User _user;
 
     public ChatController(ILogger<ChatController> logger)
     {
         _logger = logger;
-    }
-
-    private async Task<User> GetUser()
-    {
-        return await _userRepository.Get(int.Parse(TempData["UserId"].ToString()));
     }
 
     [HttpGet]
@@ -41,17 +39,50 @@ public class ChatController : Controller
         {
             return RedirectToAction("Index");
         }
-        
-        model.Date = DateTime.Now;
+
         ChatDbContext db = new();
         model.ChatDetail = await db.ChatDetails.FirstAsync(c => c.Id == int.Parse(TempData["ChatId"].ToString()));
         _user = await _userRepository.Get(int.Parse(TempData["UserId"].ToString()));
         Message message = new(model.ChatDetail, model.Content, await db.Users.FirstAsync(u => u.Id == _user.Id),
             model.Date);
-        model.ChatDetail = await db.ChatDetails.FirstAsync(c => c.Id == 1);
         await db.Messages.AddAsync(message);
         await db.SaveChangesAsync();
 
+        return RedirectToAction("Index");
+    }
+
+    [HttpGet]
+    public IActionResult AddChat()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddChat(int id)
+    {
+        var me = await _userService.Get(int.Parse(TempData["UserId"].ToString()));
+        var other = await _userService.Get(id);
+
+        using ChatDbContext db = new();
+
+        var meFromDb = await db.Users.FirstAsync(u => u.Id == me.Id);
+        var otherFromDb = await db.Users.FirstAsync(u => u.Id == other.Id);
+
+        var chatDetail = new ChatDetail(meFromDb, otherFromDb);
+
+        await db.AddAsync(chatDetail);
+        await db.SaveChangesAsync();
+        TempData["ChatId"] = chatDetail.Id;
+
+        return RedirectToAction("Index");
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> DeleteChat(int id)
+    {
+        var chat = await _chatService.Get(int.Parse(TempData["ChatId"].ToString()));
+        TempData["ChatId"] = null;
+        await _chatService.Delete(chat);
         return RedirectToAction("Index");
     }
 }

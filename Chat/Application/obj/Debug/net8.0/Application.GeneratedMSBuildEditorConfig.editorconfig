@@ -9,51 +9,55 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Application
 build_property.RootNamespace = Application
-build_property.ProjectDir = O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\Application\
+build_property.ProjectDir = C:\github\Chat\Chat\Application\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = O:\ForEdu\repos\MyProjects\CSharp\Chat\Chat\Application
+build_property.MSBuildProjectDirectory = C:\github\Chat\Chat\Application
 build_property._RazorSourceGeneratorDebug = 
 
-[O:/ForEdu/repos/MyProjects/CSharp/Chat/Chat/Application/Views/Account/LogIn.cshtml]
+[C:/github/Chat/Chat/Application/Views/Account/LogIn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dJbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[O:/ForEdu/repos/MyProjects/CSharp/Chat/Chat/Application/Views/Account/Privacy.cshtml]
+[C:/github/Chat/Chat/Application/Views/Account/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[O:/ForEdu/repos/MyProjects/CSharp/Chat/Chat/Application/Views/Account/SignUp.cshtml]
+[C:/github/Chat/Chat/Application/Views/Account/SignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTaWduVXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[O:/ForEdu/repos/MyProjects/CSharp/Chat/Chat/Application/Views/Admin/Index.cshtml]
+[C:/github/Chat/Chat/Application/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[O:/ForEdu/repos/MyProjects/CSharp/Chat/Chat/Application/Views/Chat/Index.cshtml]
+[C:/github/Chat/Chat/Application/Views/Chat/AddChat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdFxBZGRDaGF0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/github/Chat/Chat/Application/Views/Chat/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[O:/ForEdu/repos/MyProjects/CSharp/Chat/Chat/Application/Views/Shared/Error.cshtml]
+[C:/github/Chat/Chat/Application/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[O:/ForEdu/repos/MyProjects/CSharp/Chat/Chat/Application/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/github/Chat/Chat/Application/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[O:/ForEdu/repos/MyProjects/CSharp/Chat/Chat/Application/Views/_ViewImports.cshtml]
+[C:/github/Chat/Chat/Application/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[O:/ForEdu/repos/MyProjects/CSharp/Chat/Chat/Application/Views/_ViewStart.cshtml]
+[C:/github/Chat/Chat/Application/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[O:/ForEdu/repos/MyProjects/CSharp/Chat/Chat/Application/Views/Shared/_Layout.cshtml]
+[C:/github/Chat/Chat/Application/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-i02tlqhe5l

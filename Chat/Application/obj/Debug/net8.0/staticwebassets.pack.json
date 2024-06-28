@@ -1,259 +1,263 @@
 {
   "Files": [
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Application.bundle.scp.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Application.bundle.scp.css",
       "PackagePath": "staticwebassets\\Application.bundle.scp.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\css\\Admin.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\css\\Admin.css",
       "PackagePath": "staticwebassets\\css\\Admin.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\css\\chat.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\css\\addChat.css",
+      "PackagePath": "staticwebassets\\css\\addChat.css"
+    },
+    {
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\css\\chat.css",
       "PackagePath": "staticwebassets\\css\\chat.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\css\\site.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\favicon.ico",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\js\\search.js",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\js\\search.js",
       "PackagePath": "staticwebassets\\js\\search.js"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\js\\site.js",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "O:\\ForEdu\\repos\\MyProjects\\CSharp\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {

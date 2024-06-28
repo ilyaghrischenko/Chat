@@ -175,3 +175,13 @@ body {
     bottom: 1rem;
     right: 1rem;
 }
+
+.delete-chat {
+    color: #ff0000;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.delete-chat:hover {
+    color: #cc0000;
+}

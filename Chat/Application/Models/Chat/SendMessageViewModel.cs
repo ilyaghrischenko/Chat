@@ -7,17 +7,9 @@ public class SendMessageViewModel
 {
     [Required]
     public string Content { get; set; }
-    public ChatDetail ChatDetail { get; set; }
-    public DateTime Date { get; set; }
+    public ChatDetail? ChatDetail { get; set; } = null;
+    public DateTime Date { get; set; } = DateTime.Now;
     
-    public SendMessageViewModel() {}
-    public SendMessageViewModel(ChatDetail chatDetail, string content)
-    {
-        ChatDetail = chatDetail;
-        Content = content;
-        Date = DateTime.Now;
-    }
-
     public override string ToString()
         => $"{Content}";
 }
