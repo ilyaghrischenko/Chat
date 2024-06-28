@@ -11,7 +11,7 @@ public class AdminControllerService(
     ILogger<AdminControllerService> logger)
     : IAdminControllerService
 {
-    private async Task DeleteUserWithCascade(int userId)
+    public async Task DeleteUserWithCascade(int userId)
     {
         var user = await userService.Get(userId);
 
@@ -27,7 +27,7 @@ public class AdminControllerService(
     }
 
     //CHANGE!!!
-    private async Task DeleteChatsAndMessagesForUser(int userId)
+    public async Task DeleteChatsAndMessagesForUser(int userId)
     {
         await using (var _context = new ChatDbContext())
         {

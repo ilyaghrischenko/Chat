@@ -14,7 +14,12 @@ public class AccountControllerService(IUserService userService, ILogger<AccountC
     {
         if (model is { Login: "Admin", Password: "123456" })
         {
-            return new User { Login = "Admin" };
+            return new User
+            {
+                Login = "Admin",
+                Password = "123456",
+                Email = "admin@gmail.com"
+            };
         }
 
         try

@@ -10,10 +10,17 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IAccountControllerService, AccountControllerService>();
+builder.Services.AddScoped<IAdminControllerService, AdminControllerService>();
+builder.Services.AddScoped<IChatControllerService, ChatControllerService>();
+
+builder.Services.AddScoped<IMessageService, MessageService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IChatDetailService, ChatDetailService>();
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-
-
+builder.Services.AddScoped<IEntityListsRepository, EntityListsRepository>();
+builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+builder.Services.AddScoped<IChatDetailRepository, ChatDetailRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -1,8 +1,11 @@
 using System.Collections.Concurrent;
 using System.Text;
 using Application.Models.Chat;
+using Application.Services.ControllerServices.Interfaces;
 using Application.Services.DataBaseServices;
+using Application.Services.DataBaseServices.Interfaces;
 using DataBase.Context;
+using DataBase.CRUD.Interfaces;
 using DataBase.CRUD.Repositories;
 using DataBase.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -11,19 +14,14 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Application.Controllers;
 
-public class ChatController : Controller
+public class ChatController(
+    IUserRepository userRepository,
+    IUserService userService,
+    IChatDetailService chatService,
+    IChatControllerService chatControllerService)
+    : Controller
 {
-    private readonly ILogger<ChatController> _logger;
-
-    private readonly UserRepository _userRepository = new();
-    private readonly UserService _userService = new(new UserRepository());
-    private readonly ChatDetailService _chatService = new(new ChatDetailRepository());
     private User _user;
-
-    public ChatController(ILogger<ChatController> logger)
-    {
-        _logger = logger;
-    }
 
     [HttpGet]
     public IActionResult Index(int? id)
@@ -42,11 +40,13 @@ public class ChatController : Controller
 
         ChatDbContext db = new();
         model.ChatDetail = await db.ChatDetails.FirstAsync(c => c.Id == int.Parse(TempData["ChatId"].ToString()));
-        _user = await _userRepository.Get(int.Parse(TempData["UserId"].ToString()));
+        _user = await userRepository.Get(int.Parse(TempData["UserId"].ToString()));
         Message message = new(model.ChatDetail, model.Content, await db.Users.FirstAsync(u => u.Id == _user.Id),
             model.Date);
         await db.Messages.AddAsync(message);
         await db.SaveChangesAsync();
+        
+        await chatControllerService.SendMessage(model);
 
         return RedirectToAction("Index");
     }
@@ -60,8 +60,8 @@ public class ChatController : Controller
     [HttpPost]
     public async Task<IActionResult> AddChat(int id)
     {
-        var me = await _userService.Get(int.Parse(TempData["UserId"].ToString()));
-        var other = await _userService.Get(id);
+        var me = await userService.Get(int.Parse(TempData["UserId"].ToString()));
+        var other = await userService.Get(id);
 
         using ChatDbContext db = new();
 
@@ -80,9 +80,9 @@ public class ChatController : Controller
     [HttpGet]
     public async Task<IActionResult> DeleteChat(int id)
     {
-        var chat = await _chatService.Get(int.Parse(TempData["ChatId"].ToString()));
+        var chat = await chatService.Get(int.Parse(TempData["ChatId"].ToString()));
         TempData["ChatId"] = null;
-        await _chatService.Delete(chat);
+        await chatService.Delete(chat);
         return RedirectToAction("Index");
     }
 }

@@ -1,5 +1,7 @@
 using Application.Services.ControllerServices;
+using Application.Services.ControllerServices.Interfaces;
 using DataBase.Context;
+using DataBase.CRUD.Interfaces;
 using DataBase.CRUD.Repositories;
 using DataBase.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Controllers;
 
-public class AdminController(AdminControllerService adminControllerService, EntityListsRepository entityListsRepository)
+public class AdminController(IAdminControllerService adminControllerService, IEntityListsRepository entityListsRepository)
     : Controller
 {
     [HttpGet]

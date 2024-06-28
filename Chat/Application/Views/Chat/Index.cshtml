@@ -18,7 +18,7 @@
 
     var chats = await chatDetailService.GetAllForUser(user.Id);
     ChatDetail? currentChat = TempData["ChatId"] != null ? await chatDetailService.Get(int.Parse(TempData["ChatId"].ToString())) : null;
-    
+
     List<ContactViewModel> contacts = new();
     foreach (var chat in chats)
     {

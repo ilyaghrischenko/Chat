@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Application.Controllers;
 
-public class AccountController(ILogger<AccountController> logger, IAccountControllerService accountControllerService)
+public class AccountController(IAccountControllerService accountControllerService)
     : Controller
 {
     [HttpGet]
@@ -28,6 +28,11 @@ public class AccountController(ILogger<AccountController> logger, IAccountContro
         try
         {
             var user = await accountControllerService.LogInAsync(model);
+            if (user.Login == "Admin" && user.Password == "123456")
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+                
             TempData["UserId"] = user.Id;
             return RedirectToAction("Index", "Chat");
         }
