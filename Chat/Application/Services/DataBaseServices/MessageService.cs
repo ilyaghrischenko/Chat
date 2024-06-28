@@ -14,7 +14,7 @@ public class MessageService(IMessageRepository messageRepository) : IMessageServ
             throw new ArgumentNullException(nameof(message));
         }
 
-        if (message.ChatDetail.User1.Id == message.ChatDetail.User2.Id)
+        if (message.ChatDetail.User_1Id == message.ChatDetail.User_2Id)
         {
             throw new InvalidOperationException("You can't send a message to yourself.");
         }

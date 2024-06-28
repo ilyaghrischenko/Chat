@@ -7,6 +7,7 @@ namespace Application.Services.DataBaseServices;
 
 public class ChatDetailService(IChatDetailRepository chatDetailRepository) : IChatDetailService
 {
+    //CHANGE
     public async Task Insert(ChatDetail chatDetail)
     {
         ArgumentNullException.ThrowIfNull(chatDetail);

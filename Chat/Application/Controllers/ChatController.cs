@@ -30,6 +30,7 @@ public class ChatController(
         return View();
     }
 
+    //CHANGE
     [HttpPost]
     public async Task<IActionResult> SendMessage(SendMessageViewModel model)
     {
