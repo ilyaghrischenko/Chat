@@ -1,0 +1,50 @@
+@using Application.Models.Chat
+@using Application.Services.DataBaseServices
+@using DataBase.CRUD.Repositories
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Add Chat";
+
+    var userService = new UserService(new UserRepository());
+    var chatService = new ChatDetailService(new ChatDetailRepository());
+    var entityListRepository = new EntityListsRepository();
+
+    var user = await userService.Get(int.Parse(TempData["UserId"].ToString()));
+    TempData["UserId"] = user.Id;
+
+    var myChats = await chatService.GetAllForUser(user.Id);
+    var users = (await entityListRepository
+            .GetAllUsers())
+        .Where(u => u.Id != user.Id)
+        .ToList();
+
+    List<UsersListViewModel> usernames = new();
+    users.ForEach(u =>
+    {
+        if (!myChats.Any(c => c.User_1Id == u.Id || c.User_2Id == u.Id))
+        {
+            usernames.Add(new(u.Login, u.Id));
+        }
+    });
+}
+
+<div class="card">
+    <div class="search-container">
+        <h1>Search User</h1>
+        <form method="post" asp-controller="Chat" asp-action="SearchNewUserForChat">
+            <input type="text" id="username" placeholder="Enter username" required asp-route-username="Username"/>
+            <button>Search</button>
+        </form>
+    </div>
+    <div class="results-container" id="results-container">
+        @foreach (var username in usernames)
+        {
+            <div class="result">
+                <form asp-controller="Chat" asp-action="AddChat" method="post">
+                    <button asp-route-id="@username.Id">@username</button>
+                </form>
+            </div>
+        }
+    </div>
+</div>
