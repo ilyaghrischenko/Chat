@@ -1,3 +1,4 @@
+@using System.Collections.Specialized
 @using Application.Models.Chat
 @using Application.Services.DataBaseServices
 @using DataBase.CRUD.Repositories
@@ -29,22 +30,28 @@
     });
 }
 
-<div class="card">
-    <div class="search-container">
-        <h1>Search User</h1>
-        <form method="post" asp-controller="Chat" asp-action="SearchNewUserForChat">
-            <input type="text" id="username" placeholder="Enter username" required asp-route-username="Username"/>
-            <button>Search</button>
-        </form>
-    </div>
-    <div class="results-container" id="results-container">
-        @foreach (var username in usernames)
-        {
-            <div class="result">
-                <form asp-controller="Chat" asp-action="AddChat" method="post">
-                    <button asp-route-id="@username.Id">@username</button>
-                </form>
-            </div>
-        }
+@section Styles {
+    <link rel="stylesheet" href="~/css/addChat.css">
+}
+@section Scripts {
+    <script src="~/js/addChatSearch.js"></script>
+}
+
+<div class="page-container">
+    <div class="card">
+        <div class="search-container">
+            <h1>Search User</h1>
+            <input type="text" id="username" placeholder="Enter username" onkeyup="filterUsers()"/>
+        </div>
+        <div class="results-container" id="results-container">
+            @foreach (var username in usernames)
+            {
+                <div class="result-item">
+                    <form asp-controller="Chat" asp-action="AddChat" method="post">
+                        <button class="result-button" asp-route-id="@username.Id">@username.Login</button>
+                    </form>
+                </div>
+            }
+        </div>
     </div>
 </div>

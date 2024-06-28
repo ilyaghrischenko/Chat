@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KWKaZBphY718GEe28OIhu8F6FkmT4D4gqEyo+4E5aPc=",
+  "Hash": "Nhq13981Ge/2NCJKvAQblJsD2vxw/xrE0GbmuhLkBc0=",
   "Source": "Application",
   "BasePath": "_content/Application",
   "Mode": "Default",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\js\\addChatSearch.js",
+      "SourceId": "Application",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\",
+      "BasePath": "_content/Application",
+      "RelativePath": "js/addChatSearch.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\addChatSearch.js"
     },
     {
       "Identity": "C:\\github\\Chat\\Chat\\Application\\wwwroot\\js\\search.js",
