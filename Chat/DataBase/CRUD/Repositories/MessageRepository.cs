@@ -34,5 +34,11 @@ namespace DataBase.CRUD.Repositories
                 .ToListAsync();
 
         public async Task<Message?> Get(int id) => await _context.Messages.FirstOrDefaultAsync(x => x.Id == id);
+        
+        public async Task RemoveRange(List<Message> messages)
+        {
+            _context.Messages.RemoveRange(messages);
+            await _context.SaveChangesAsync();
+        }
     }
 }

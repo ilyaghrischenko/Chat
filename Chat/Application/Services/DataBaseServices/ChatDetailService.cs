@@ -7,19 +7,18 @@ namespace Application.Services.DataBaseServices;
 
 public class ChatDetailService(IChatDetailRepository chatDetailRepository) : IChatDetailService
 {
-    //CHANGE
     public async Task Insert(ChatDetail chatDetail)
     {
         ArgumentNullException.ThrowIfNull(chatDetail);
 
-        if (chatDetail.User1.Id == chatDetail.User2.Id)
+        if (chatDetail.User_1Id == chatDetail.User_2Id)
         {
             throw new InvalidOperationException("You can't create a chat with yourself.");
         }
 
         if (await chatDetailRepository.GetWithUsers(chatDetail.User1, chatDetail.User2) != null)
         {
-            throw new InvalidOperationException("You can't create a chat with the same users.");
+            throw new InvalidOperationException("This chat already exists.");
         }
         
         await chatDetailRepository.Insert(chatDetail);

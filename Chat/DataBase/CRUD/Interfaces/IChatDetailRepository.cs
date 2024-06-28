@@ -10,5 +10,6 @@ namespace DataBase.CRUD.Interfaces
         Task<ChatDetail?> GetWithUsers(User user1, User user2);
         Task<ChatDetail?> Get(int id);
         Task<List<ChatDetail>> GetAllForUser(int userId);
+        Task RemoveRange(List<ChatDetail> chatDetails);
     }
 }

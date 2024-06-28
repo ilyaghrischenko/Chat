@@ -30,7 +30,6 @@ public class ChatController(
         return View();
     }
 
-    //CHANGE
     [HttpPost]
     public async Task<IActionResult> SendMessage(SendMessageViewModel model)
     {
@@ -66,14 +65,11 @@ public class ChatController(
 
         using ChatDbContext db = new();
 
-        var meFromDb = await db.Users.FirstAsync(u => u.Id == me.Id);
-        var otherFromDb = await db.Users.FirstAsync(u => u.Id == other.Id);
-
-        var chatDetail = new ChatDetail(meFromDb, otherFromDb);
-
-        await db.AddAsync(chatDetail);
-        await db.SaveChangesAsync();
-        TempData["ChatId"] = chatDetail.Id;
+        ChatDetail newChat = new(await db.Users.FirstAsync(u => u.Id == me.Id),
+            await db.Users.FirstAsync(u => u.Id == other.Id));
+        
+        await chatService.Insert(newChat);
+        TempData["ChatId"] = newChat.Id;
 
         return RedirectToAction("Index");
     }

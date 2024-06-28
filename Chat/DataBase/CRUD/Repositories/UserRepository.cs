@@ -18,22 +18,8 @@ namespace DataBase.CRUD.Repositories
 
         public async Task Insert(User user)
         {
-            // if (user == null)
-            //     throw new ArgumentNullException(nameof(user));
-            //
-            // var existingUser = await _context.Users.FirstOrDefaultAsync(x => x.Login == user.Login);
-            // if (existingUser != null)
-            //     throw new Exception("User with this login already exists");
-            //
-            // try
-            // {
-            await _context.Users.AddAsync(user);
+            await _context.AddAsync(user);
             await _context.SaveChangesAsync();
-            // }
-            // catch (Exception ex)
-            // {
-            //     throw new Exception("Failed to add user");
-            // }
         }
 
         public async Task Update(User user)
@@ -44,13 +30,13 @@ namespace DataBase.CRUD.Repositories
             existingUser.Password = user.Password;
             existingUser.Email = user.Email;
 
-            _context.Users.Update(existingUser);
+            _context.Update(existingUser);
             await _context.SaveChangesAsync();
         }
 
         public async Task Delete(User user)
         {
-            _context.Users.Remove(user);
+            _context.Remove(user);
             await _context.SaveChangesAsync();
         }
 
