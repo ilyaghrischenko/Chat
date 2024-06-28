@@ -1,3 +1,4 @@
+using Application.Hubs;
 using Application.Services.ControllerServices;
 using Application.Services.ControllerServices.Interfaces;
 using Application.Services.DataBaseServices;
@@ -24,6 +25,7 @@ builder.Services.AddScoped<IChatDetailRepository, ChatDetailRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSignalR();
 
 builder.Services.AddDbContext<ChatDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ChatDbContext") ?? throw new InvalidOperationException("Connection string 'MovieContext' not found.")));
@@ -48,5 +50,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Account}/{action=LogIn}/{id?}");
+app.MapHub<ChatHub>("/chatHub");
 
 app.Run();

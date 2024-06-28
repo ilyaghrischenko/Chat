@@ -17,6 +17,8 @@ namespace DataBase.CRUD.Repositories
 
         public async Task Insert(Message message)
         {
+            message.User = await _context.Users.FirstAsync(x => x.Id == message.User.Id);
+            message.ChatDetail = await _context.ChatDetails.FirstAsync(x => x.Id == message.ChatDetail.Id);
             await _context.Messages.AddAsync(message);
             await _context.SaveChangesAsync();
         }
