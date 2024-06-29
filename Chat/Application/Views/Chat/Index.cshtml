@@ -114,6 +114,8 @@
     document.getElementById("sendMessageForm").addEventListener("submit", function (event) {
         event.preventDefault();
         const message = document.getElementById("messageInput").value;
+        if (!message || message.trim() === '') return;
+
         const userId = '@user.Id';
         const chatId = '@currentChat?.Id';
 
