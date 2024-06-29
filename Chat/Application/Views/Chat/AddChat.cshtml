@@ -1,33 +1,9 @@
-@using System.Collections.Specialized
 @using Application.Models.Chat
-@using Application.Services.DataBaseServices
-@using DataBase.CRUD.Repositories
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 
+@model List<UsersListViewModel>
 @{
     ViewData["Title"] = "Add Chat";
-
-    var userService = new UserService(new UserRepository());
-    var chatService = new ChatDetailService(new ChatDetailRepository());
-    var entityListRepository = new EntityListsRepository();
-
-    var user = await userService.Get(int.Parse(TempData["UserId"].ToString()));
-    TempData["UserId"] = user.Id;
-
-    var myChats = await chatService.GetAllForUser(user.Id);
-    var users = (await entityListRepository
-            .GetAllUsers())
-        .Where(u => u.Id != user.Id)
-        .ToList();
-
-    List<UsersListViewModel> usernames = new();
-    users.ForEach(u =>
-    {
-        if (!myChats.Any(c => c.User_1Id == u.Id || c.User_2Id == u.Id))
-        {
-            usernames.Add(new(u.Login, u.Id));
-        }
-    });
 }
 
 @section Styles {
@@ -39,19 +15,26 @@
 
 <div class="page-container">
     <div class="card">
-        <div class="search-container">
-            <h1>Search User</h1>
-            <input type="text" id="username" placeholder="Enter username" onkeyup="filterUsers()"/>
-        </div>
-        <div class="results-container" id="results-container">
-            @foreach (var username in usernames)
-            {
-                <div class="result-item">
-                    <form asp-controller="Chat" asp-action="AddChat" method="post">
-                        <button class="result-button" asp-route-id="@username.Id">@username.Login</button>
-                    </form>
-                </div>
-            }
-        </div>
+        @if (Model != null)
+        {
+            <div class="search-container">
+                <h1>Search User</h1>
+                <input type="text" id="username" placeholder="Enter username" onkeyup="filterUsers()"/>
+            </div>
+            <div class="results-container" id="results-container">
+                @foreach (var username in Model)
+                {
+                    <div class="result-item">
+                        <form asp-controller="Chat" asp-action="AddChat" method="post">
+                            <button class="result-button" asp-route-id="@username.Id">@username.Login</button>
+                        </form>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <h1>No users found</h1>
+        }
     </div>
 </div>

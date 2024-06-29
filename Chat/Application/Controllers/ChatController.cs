@@ -14,7 +14,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Application.Controllers;
 
-public class ChatController(IChatControllerService chatControllerService)
+public class ChatController(
+    IChatControllerService chatControllerService,
+    IUserService userService)
     : Controller
 {
     private User _user;
@@ -27,9 +29,12 @@ public class ChatController(IChatControllerService chatControllerService)
     }
 
     [HttpGet]
-    public IActionResult AddChat()
+    public async Task<IActionResult> AddChat()
     {
-        return View();
+        var userId = int.Parse(TempData["UserId"].ToString());
+        var allUsers = await chatControllerService.GetAllUsers(userId);
+        TempData["UserId"] = userId;
+        return View(allUsers);
     }
 
     [HttpPost]
