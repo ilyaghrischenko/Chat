@@ -5,28 +5,28 @@
 @using DataBase.Models
 @model Application.Models.Chat.SendMessageViewModel
 @{
-Layout = null;
+    Layout = null;
 
-UserService userService = new UserService(new UserRepository());
-ChatDetailService chatDetailService = new ChatDetailService(new ChatDetailRepository());
-MessageService messageService = new MessageService(new MessageRepository());
+    UserService userService = new UserService(new UserRepository());
+    ChatDetailService chatDetailService = new ChatDetailService(new ChatDetailRepository());
+    MessageService messageService = new MessageService(new MessageRepository());
 
-var user = await userService.Get(int.Parse(TempData["UserId"].ToString()));
-TempData["UserId"] = user.Id;
+    var user = await userService.Get(int.Parse(TempData["UserId"].ToString()));
+    TempData["UserId"] = user.Id;
 
-var chats = await chatDetailService.GetAllForUser(user.Id);
-ChatDetail? currentChat = TempData["ChatId"] != null ? await chatDetailService.Get(int.Parse(TempData["ChatId"].ToString())) : null;
-TempData["ChatId"] = currentChat?.Id;
+    var chats = await chatDetailService.GetAllForUser(user.Id);
+    ChatDetail? currentChat = TempData["ChatId"] != null ? await chatDetailService.Get(int.Parse(TempData["ChatId"].ToString())) : null;
+    TempData["ChatId"] = currentChat?.Id;
 
-List<ContactViewModel> contacts = new List<ContactViewModel>();
-foreach (var chat in chats)
-{
-if (chat.Id == currentChat?.Id) continue;
+    List<ContactViewModel> contacts = new List<ContactViewModel>();
+    foreach (var chat in chats)
+    {
+        if (chat.Id == currentChat?.Id) continue;
 
-var contactUserId = chat.User_1Id == user.Id ? chat.User_2Id : chat.User_1Id;
-var contactUser = await userService.Get(contactUserId);
-contacts.Add(new ContactViewModel(contactUser.Login, chat.Id));
-}
+        var contactUserId = chat.User_1Id == user.Id ? chat.User_2Id : chat.User_1Id;
+        var contactUser = await userService.Get(contactUserId);
+        contacts.Add(new ContactViewModel(contactUser.Login, chat.Id));
+    }
 }
 
 <!DOCTYPE html>
@@ -47,9 +47,9 @@ contacts.Add(new ContactViewModel(contactUser.Login, chat.Id));
         <div class="contact-list">
             @foreach (var contact in contacts)
             {
-            <a asp-controller="Chat" asp-action="Index" asp-route-id="@contact.ChatDetailId">
-                <div class="contact">@contact.Login</div>
-            </a>
+                <a asp-controller="Chat" asp-action="Index" asp-route-id="@contact.ChatDetailId">
+                    <div class="contact">@contact.Login</div>
+                </a>
             }
         </div>
         <form asp-controller="Chat" asp-action="AddChat" method="get" class="newChatButton">
@@ -59,31 +59,31 @@ contacts.Add(new ContactViewModel(contactUser.Login, chat.Id));
     <div class="chat">
         @if (currentChat != null)
         {
-        TempData["ChatId"] = currentChat.Id;
-        var messages = await messageService.GetByChatDetail(currentChat);
-        var user1 = await userService.Get(currentChat.User_1Id);
-        var user2 = await userService.Get(currentChat.User_2Id);
+            TempData["ChatId"] = currentChat.Id;
+            var messages = await messageService.GetByChatDetail(currentChat);
+            var user1 = await userService.Get(currentChat.User_1Id);
+            var user2 = await userService.Get(currentChat.User_2Id);
 
-        <div class="chat-header">
-            @((user1.Login == user.Login) ? user2.Login : user1.Login)
-            <a asp-controller="Chat" asp-action="DeleteChat" asp-route-id="@currentChat.Id" class="delete-chat">
-                <i class="fas fa-trash-alt"></i>
-            </a>
-        </div>
-        <div id="chatWindow" class="chat-window">
-            @foreach (var item in messages)
-            {
-            <div class="@(item.UserId == user.Id ? "message mine" : "message theirs")">
-                <div class="text">@item.MessageContent</div>
-                <div class="date">@item.MessageDate</div>
+            <div class="chat-header">
+                @((user1.Login == user.Login) ? user2.Login : user1.Login)
+                <a asp-controller="Chat" asp-action="DeleteChat" class="delete-chat">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
             </div>
-            }
-        </div>
+            <div id="chatWindow" class="chat-window">
+                @foreach (var item in messages)
+                {
+                    <div class="@(item.UserId == user.Id ? "message mine" : "message theirs")">
+                        <div class="text">@item.MessageContent</div>
+                        <div class="date">@item.MessageDate</div>
+                    </div>
+                }
+            </div>
 
-        <form id="sendMessageForm" class="message-input">
-            <input type="text" id="messageInput" />
-            <button type="submit">Send</button>
-        </form>
+            <form id="sendMessageForm" class="message-input">
+                <input type="text" id="messageInput"/>
+                <button type="submit">Send</button>
+            </form>
         }
     </div>
 </div>
@@ -115,7 +115,7 @@ contacts.Add(new ContactViewModel(contactUser.Login, chat.Id));
         event.preventDefault();
         const message = document.getElementById("messageInput").value;
         const userId = '@user.Id';
-        const chatId = '@currentChat?.Id'; // Replace with appropriate logic to get chatId
+        const chatId = '@currentChat?.Id';
 
         connection.invoke("SendMessage", userId, chatId, message).catch(function (err) {
             return console.error(err.toString());

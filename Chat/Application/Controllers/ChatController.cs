@@ -14,11 +14,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Application.Controllers;
 
-public class ChatController(
-    IUserRepository userRepository,
-    IUserService userService,
-    IChatDetailService chatService,
-    IChatControllerService chatControllerService)
+public class ChatController(IChatControllerService chatControllerService)
     : Controller
 {
     private User _user;
@@ -30,27 +26,6 @@ public class ChatController(
         return View();
     }
 
-    [HttpPost]
-    public async Task<IActionResult> SendMessage(SendMessageViewModel model)
-    {
-        if (!ModelState.IsValid)
-        {
-            return RedirectToAction("Index");
-        }
-
-        ChatDbContext db = new();
-        model.ChatDetail = await db.ChatDetails.FirstAsync(c => c.Id == int.Parse(TempData["ChatId"].ToString()));
-        _user = await userRepository.Get(int.Parse(TempData["UserId"].ToString()));
-        Message message = new(model.ChatDetail, model.Content, await db.Users.FirstAsync(u => u.Id == _user.Id),
-            model.Date);
-        await db.Messages.AddAsync(message);
-        await db.SaveChangesAsync();
-        
-        await chatControllerService.SendMessage(model);
-
-        return RedirectToAction("Index");
-    }
-
     [HttpGet]
     public IActionResult AddChat()
     {
@@ -60,26 +35,25 @@ public class ChatController(
     [HttpPost]
     public async Task<IActionResult> AddChat(int id)
     {
-        var me = await userService.Get(int.Parse(TempData["UserId"].ToString()));
-        var other = await userService.Get(id);
-
-        using ChatDbContext db = new();
-
-        ChatDetail newChat = new(await db.Users.FirstAsync(u => u.Id == me.Id),
-            await db.Users.FirstAsync(u => u.Id == other.Id));
-        
-        await chatService.Insert(newChat);
+        var newChat = await chatControllerService.AddChat(int.Parse(TempData["UserId"].ToString()), id);
         TempData["ChatId"] = newChat.Id;
 
         return RedirectToAction("Index");
     }
 
     [HttpGet]
-    public async Task<IActionResult> DeleteChat(int id)
+    public async Task<IActionResult> DeleteChat()
     {
-        var chat = await chatService.Get(int.Parse(TempData["ChatId"].ToString()));
+        try
+        {
+            await chatControllerService.DeleteChat(int.Parse(TempData["ChatId"].ToString()));
+        }
+        catch (ArgumentNullException ex)
+        {
+            return RedirectToAction("Index");
+        }
+
         TempData["ChatId"] = null;
-        await chatService.Delete(chat);
         return RedirectToAction("Index");
     }
 }

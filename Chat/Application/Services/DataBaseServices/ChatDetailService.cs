@@ -26,7 +26,10 @@ public class ChatDetailService(IChatDetailRepository chatDetailRepository) : ICh
 
     public async Task Delete(ChatDetail chatDetail)
     {
-        ArgumentNullException.ThrowIfNull(chatDetail);
+        if (chatDetail == null)
+        {
+            throw new ArgumentNullException("This chat already deleted");
+        }
 
         await chatDetailRepository.Delete(chatDetail);
     }

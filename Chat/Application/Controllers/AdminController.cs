@@ -9,7 +9,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Controllers;
 
-public class AdminController(IAdminControllerService adminControllerService, IEntityListsRepository entityListsRepository)
+public class AdminController(
+    IAdminControllerService adminControllerService,
+    IEntityListsRepository entityListsRepository)
     : Controller
 {
     [HttpGet]
