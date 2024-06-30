@@ -20,12 +20,28 @@ public class ChatController(
     : Controller
 {
     private User _user;
-
+    
     [HttpGet]
-    public IActionResult Index(int? id)
+    public async Task<IActionResult> Index(int? id)
     {
         if (id != null) TempData["ChatId"] = id;
-        return View();
+
+        var userId = int.Parse(TempData["UserId"].ToString());
+        int? chatId = null;
+        try
+        {
+            chatId = int.Parse(TempData["ChatId"].ToString());
+        }
+        catch (NullReferenceException)
+        {
+            chatId = null;
+        }
+
+        var chatInfo = await chatControllerService.GetChatInfo(userId, chatId);
+        TempData["UserId"] = userId;
+        TempData["ChatId"] = chatId;
+        
+        return View(chatInfo);
     }
 
     [HttpGet]

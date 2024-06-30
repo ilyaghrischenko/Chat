@@ -8,5 +8,5 @@ public interface IChatDetailService
     Task Delete(ChatDetail chatDetail);
     Task<ChatDetail?> GetWithUsers(User user1, User user2);
     Task<ChatDetail?> Get(int id);
-    Task<List<ChatDetail>> GetAllForUser(int userId);
+    Task<List<ChatDetail>?> GetAllForUser(int userId);
 }

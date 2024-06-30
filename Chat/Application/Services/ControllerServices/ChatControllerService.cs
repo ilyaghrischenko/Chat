@@ -35,7 +35,7 @@ public class ChatControllerService(
                 usernames.Add(new(u.Login, u.Id));
             }
         });
-        
+
         return usernames;
     }
 
@@ -58,5 +58,34 @@ public class ChatControllerService(
         var chat = await chatService.Get(chatId);
 
         await chatService.Delete(chat);
+    }
+
+    public async Task<ChatViewModel> GetChatInfo(int userId, int? chatId)
+    {
+        UserService userService = new UserService(new UserRepository());
+        ChatDetailService chatDetailService = new ChatDetailService(new ChatDetailRepository());
+        MessageService messageService = new MessageService(new MessageRepository());
+
+        var user = await userService.Get(userId);
+
+        var chats = await chatDetailService.GetAllForUser(user.Id);
+
+        int id = (chatId == null) ? 0 : chatId.Value;
+        ChatDetail? currentChat = id == 0 ? null : await chatDetailService.Get(id);
+
+        List<Contact> contacts = new List<Contact>();
+        foreach (var chat in chats)
+        {
+            if (chat.Id == currentChat?.Id) continue;
+
+            var contactUserId = chat.User_1Id == user.Id ? chat.User_2Id : chat.User_1Id;
+            var contactUser = await userService.Get(contactUserId);
+            contacts.Add(new Contact(contactUser.Login, chat.Id));
+        }
+
+        return new ChatViewModel(currentChat,
+            contacts,
+            (currentChat == null) ? new() : await messageService.GetByChatDetail(currentChat),
+            user);
     }
 }

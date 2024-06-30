@@ -56,7 +56,7 @@ public class ChatDetailService(IChatDetailRepository chatDetailRepository) : ICh
         return await chatDetailRepository.Get(id);
     }
 
-    public async Task<List<ChatDetail>> GetAllForUser(int userId)
+    public async Task<List<ChatDetail>?> GetAllForUser(int userId)
     {
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(userId);
 

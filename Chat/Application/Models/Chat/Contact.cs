@@ -1,6 +1,6 @@
 namespace Application.Models.Chat;
 
-public class ContactViewModel(string login, int chatDetailId)
+public class Contact(string login, int chatDetailId)
 {
     public string Login { get; set; } = login;
     public int ChatDetailId { get; set; } = chatDetailId;

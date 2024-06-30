@@ -1,32 +1,15 @@
 @using Application.Models.Chat
 @using Application.Services.DataBaseServices
+@using Application.Services.DataBaseServices.Interfaces
 @using DataBase.Context
 @using DataBase.CRUD.Repositories
 @using DataBase.Models
-@model Application.Models.Chat.SendMessageViewModel
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model ChatViewModel
 @{
     Layout = null;
-
-    UserService userService = new UserService(new UserRepository());
-    ChatDetailService chatDetailService = new ChatDetailService(new ChatDetailRepository());
-    MessageService messageService = new MessageService(new MessageRepository());
-
-    var user = await userService.Get(int.Parse(TempData["UserId"].ToString()));
-    TempData["UserId"] = user.Id;
-
-    var chats = await chatDetailService.GetAllForUser(user.Id);
-    ChatDetail? currentChat = TempData["ChatId"] != null ? await chatDetailService.Get(int.Parse(TempData["ChatId"].ToString())) : null;
-    TempData["ChatId"] = currentChat?.Id;
-
-    List<ContactViewModel> contacts = new List<ContactViewModel>();
-    foreach (var chat in chats)
-    {
-        if (chat.Id == currentChat?.Id) continue;
-
-        var contactUserId = chat.User_1Id == user.Id ? chat.User_2Id : chat.User_1Id;
-        var contactUser = await userService.Get(contactUserId);
-        contacts.Add(new ContactViewModel(contactUser.Login, chat.Id));
-    }
+    IUserService userService = new UserService(new UserRepository());
 }
 
 <!DOCTYPE html>
@@ -45,11 +28,14 @@
             <input type="text" placeholder="Search contacts">
         </div>
         <div class="contact-list">
-            @foreach (var contact in contacts)
+            @if (Model.Contacts != null)
             {
-                <a asp-controller="Chat" asp-action="Index" asp-route-id="@contact.ChatDetailId">
-                    <div class="contact">@contact.Login</div>
-                </a>
+                foreach (var contact in Model.Contacts)
+                {
+                    <a asp-controller="Chat" asp-action="Index" asp-route-id="@contact.ChatDetailId">
+                        <div class="contact">@contact.Login</div>
+                    </a>
+                }
             }
         </div>
         <form asp-controller="Chat" asp-action="AddChat" method="get" class="newChatButton">
@@ -57,23 +43,22 @@
         </form>
     </div>
     <div class="chat">
-        @if (currentChat != null)
+        @if (Model.CurrentChat != null)
         {
-            TempData["ChatId"] = currentChat.Id;
-            var messages = await messageService.GetByChatDetail(currentChat);
-            var user1 = await userService.Get(currentChat.User_1Id);
-            var user2 = await userService.Get(currentChat.User_2Id);
+            TempData["ChatId"] = Model.CurrentChat.Id;
+            var user1 = await userService.Get(Model.CurrentChat.User_1Id);
+            var user2 = await userService.Get(Model.CurrentChat.User_2Id);
 
             <div class="chat-header">
-                @((user1.Login == user.Login) ? user2.Login : user1.Login)
+                @((user1.Login == Model.User.Login) ? user2.Login : user1.Login)
                 <a asp-controller="Chat" asp-action="DeleteChat" class="delete-chat">
                     <i class="fas fa-trash-alt"></i>
                 </a>
             </div>
             <div id="chatWindow" class="chat-window">
-                @foreach (var item in messages)
+                @foreach (var item in Model.Messages)
                 {
-                    <div class="@(item.UserId == user.Id ? "message mine" : "message theirs")">
+                    <div class="@(item.UserId == Model.User.Id ? "message mine" : "message theirs")">
                         <div class="text">@item.MessageContent</div>
                         <div class="date">@item.MessageDate</div>
                     </div>
@@ -99,7 +84,7 @@
     connection.start().then(function () {
         console.log("SignalR connected");
 
-        const chatId = '@currentChat?.Id';
+        const chatId = '@Model.CurrentChat?.Id';
         if (chatId) {
             connection.invoke("JoinChat", chatId).catch(function (err) {
                 console.error(err.toString());
@@ -116,8 +101,8 @@
         const message = document.getElementById("messageInput").value;
         if (!message || message.trim() === '') return;
 
-        const userId = '@user.Id';
-        const chatId = '@currentChat?.Id';
+        const userId = '@Model.User.Id';
+        const chatId = '@Model.CurrentChat?.Id';
 
         connection.invoke("SendMessage", userId, chatId, message).catch(function (err) {
             return console.error(err.toString());
@@ -130,7 +115,7 @@
         const chatWindow = document.getElementById("chatWindow");
         const messageDiv = document.createElement("div");
         console.log(message + " " + "received");
-        messageDiv.classList.add("message", userId === '@user.Id' ? "mine" : "theirs");
+        messageDiv.classList.add("message", userId === '@Model.User.Id' ? "mine" : "theirs");
         messageDiv.innerHTML = `
             <div class="text">${message}</div>
             <div class="date">${new Date().toLocaleString()}</div>`;
