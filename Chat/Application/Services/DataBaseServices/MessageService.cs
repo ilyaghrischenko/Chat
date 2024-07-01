@@ -51,4 +51,14 @@ public class MessageService(IMessageRepository messageRepository) : IMessageServ
         
         return await messageRepository.Get(id);
     }
+
+    public async Task<List<Message>> GetLast50Messages(ChatDetail chatDetail)
+    {
+        if (chatDetail == null)
+        {
+            throw new ArgumentNullException(nameof(chatDetail));
+        }
+        
+        return await messageRepository.GetLast50Messages(chatDetail);
+    }
 }

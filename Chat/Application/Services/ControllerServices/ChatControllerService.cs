@@ -83,9 +83,11 @@ public class ChatControllerService(
             contacts.Add(new Contact(contactUser.Login, chat.Id));
         }
 
+        var messages = (currentChat == null) ? new() : await messageService.GetLast50Messages(currentChat);
+        
         return new ChatViewModel(currentChat,
             contacts,
-            (currentChat == null) ? new() : await messageService.GetByChatDetail(currentChat),
+            messages,
             user);
     }
 }
