@@ -13,7 +13,9 @@ namespace DataBase.CRUD.Repositories
     {
         private readonly ChatDbContext _context = new();
 
-        public MessageRepository() { }
+        public MessageRepository()
+        {
+        }
 
         public async Task Insert(Message message)
         {
@@ -36,17 +38,24 @@ namespace DataBase.CRUD.Repositories
                 .ToListAsync();
 
         public async Task<Message?> Get(int id) => await _context.Messages.FirstOrDefaultAsync(x => x.Id == id);
-        
+
         public async Task RemoveRange(List<Message> messages)
         {
             _context.Messages.RemoveRange(messages);
             await _context.SaveChangesAsync();
         }
 
+        public async Task<List<Message>> GetMessagesByLength(ChatDetail chatDetail, int length)
+            => (await _context.Messages
+                    .Where(x => x.ChatDetail == chatDetail)
+                    .ToListAsync())
+                .TakeLast(length)
+                .ToList();
+
         public async Task<List<Message>> GetLast50Messages(ChatDetail chatDetail)
             => (await _context.Messages
-                .Where(x => x.ChatDetail == chatDetail)
-                .ToListAsync())
+                    .Where(x => x.ChatDetail == chatDetail)
+                    .ToListAsync())
                 .TakeLast(50)
                 .ToList();
     }

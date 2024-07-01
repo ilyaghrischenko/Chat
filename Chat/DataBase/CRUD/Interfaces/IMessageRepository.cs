@@ -11,6 +11,6 @@ namespace DataBase.CRUD.Interfaces
         Task<List<Message>> GetByChatDetail(ChatDetail chatDetail);
         Task<Message?> Get(int id);
         Task RemoveRange(List<Message> messages);
-        Task<List<Message>> GetLast50Messages(ChatDetail chatDetail);
+        Task<List<Message>> GetMessagesByLength(ChatDetail chatDetail, int length);
     }
 }

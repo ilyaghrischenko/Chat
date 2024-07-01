@@ -52,13 +52,13 @@ public class MessageService(IMessageRepository messageRepository) : IMessageServ
         return await messageRepository.Get(id);
     }
 
-    public async Task<List<Message>> GetLast50Messages(ChatDetail chatDetail)
+    public async Task<List<Message>> GetMessagesByLength(ChatDetail chatDetail, int length)
     {
         if (chatDetail == null)
         {
             throw new ArgumentNullException(nameof(chatDetail));
         }
         
-        return await messageRepository.GetLast50Messages(chatDetail);
+        return await messageRepository.GetMessagesByLength(chatDetail, length);
     }
 }

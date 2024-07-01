@@ -14,6 +14,7 @@ public class ChatControllerService(
     IUserService userService,
     IChatDetailService chatService,
     IEntityListsRepository entityListRepository,
+    IMessageService messageService,
     ILogger<ChatControllerService> logger)
     : IChatControllerService
 {
@@ -60,7 +61,7 @@ public class ChatControllerService(
         await chatService.Delete(chat);
     }
 
-    public async Task<ChatViewModel> GetChatInfo(int userId, int? chatId)
+    public async Task<ChatViewModel> GetChatInfo(int userId, int? chatId, int currentLength = 0)
     {
         UserService userService = new UserService(new UserRepository());
         ChatDetailService chatDetailService = new ChatDetailService(new ChatDetailRepository());
@@ -83,11 +84,20 @@ public class ChatControllerService(
             contacts.Add(new Contact(contactUser.Login, chat.Id));
         }
 
-        var messages = (currentChat == null) ? new() : await messageService.GetLast50Messages(currentChat);
-        
+        var messages = (currentChat == null)
+            ? new()
+            : await messageService.GetMessagesByLength(currentChat, currentLength + 50);
+    
         return new ChatViewModel(currentChat,
             contacts,
             messages,
             user);
+    }
+
+    public async Task<ChatViewModel> LoadMoreMessages(int userId, int chatId, int currentLength)
+    {
+        var chat = await chatService.Get(chatId);
+        var allMessages = await messageService.GetByChatDetail(chat);
+        return await GetChatInfo(userId, chatId, currentLength);
     }
 }
