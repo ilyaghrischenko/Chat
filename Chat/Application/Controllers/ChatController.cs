@@ -77,4 +77,10 @@ public class ChatController(
         TempData["ChatId"] = null;
         return RedirectToAction("Index");
     }
+    
+    [HttpPost]
+    public async Task<IActionResult> LoadMoreMessages()
+    {
+        return await Index(null);
+    }
 }

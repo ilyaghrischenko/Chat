@@ -55,7 +55,14 @@
                     <i class="fas fa-trash-alt"></i>
                 </a>
             </div>
+
             <div id="chatWindow" class="chat-window">
+                <form asp-controller="Chat" asp-action="LoadMoreMessages" method="post" class="load-more-messages-form">
+                    <button type="submit" class="load-more-button">
+                        <i class="fas fa-redo-alt"></i>
+                    </button>
+                </form>
+                
                 @foreach (var item in Model.Messages)
                 {
                     <div class="@(item.UserId == Model.User.Id ? "message mine" : "message theirs")">
