@@ -8,4 +8,5 @@ public interface IMessageService
     Task Delete(Message message);
     Task<List<Message>> GetByChatDetail(ChatDetail chatDetail);
     Task<Message> Get(int id);
+    Task<List<Message>> GetLast50Messages(ChatDetail chatDetail);
 }

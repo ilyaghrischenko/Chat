@@ -30,8 +30,8 @@ namespace DataBase.CRUD.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<Message>> GetByChatDetail(ChatDetail chatDetail) =>
-            await _context.Messages
+        public async Task<List<Message>> GetByChatDetail(ChatDetail chatDetail)
+            => await _context.Messages
                 .Where(x => x.ChatDetail == chatDetail)
                 .ToListAsync();
 
@@ -42,5 +42,12 @@ namespace DataBase.CRUD.Repositories
             _context.Messages.RemoveRange(messages);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<List<Message>> GetLast50Messages(ChatDetail chatDetail)
+            => (await _context.Messages
+                .Where(x => x.ChatDetail == chatDetail)
+                .ToListAsync())
+                .TakeLast(50)
+                .ToList();
     }
 }

@@ -109,6 +109,7 @@
         });
         console.log("Message sent " + message + " " + chatId + " ");
         document.getElementById("messageInput").value = '';
+        scrollToBottom();
     });
 
     connection.on("ReceiveMessage", function (userId, message) {
@@ -120,8 +121,19 @@
             <div class="text">${message}</div>
             <div class="date">${new Date().toLocaleString()}</div>`;
         chatWindow.appendChild(messageDiv);
+        scrollToBottom();
     });
+
+    function scrollToBottom() {
+        const chatWindow = document.getElementById("chatWindow");
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+
+    window.onload = function() {
+        scrollToBottom();
+    };
 </script>
+
 
 </body>
 </html>
